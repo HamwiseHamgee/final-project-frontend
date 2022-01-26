@@ -8,9 +8,9 @@ import Results from './Results';
 function App() {
   return (
     <div className="App">
-      <Header></Header>
-      <SearchForm></SearchForm>
-      <Results></Results>
+      <Header/>
+      <SearchForm/>
+      <Results/>
     </div>
   );
 }

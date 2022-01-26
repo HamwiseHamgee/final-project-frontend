@@ -2,7 +2,10 @@ function SearchForm() {
   return (
     <div className="searchFormContainer">
       <h2>Add the ingredients you have here</h2>
-      <input>Search</input>
+      <label>
+        Search
+        <input />
+      </label>
       <ul>{/* Ingredients list here */}</ul>
     </div>
   );
