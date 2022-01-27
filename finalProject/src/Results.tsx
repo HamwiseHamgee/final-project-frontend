@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from 'axios'
+import axios from 'axios';
 
 interface Result {
   id: number,
@@ -40,8 +40,8 @@ export function ResultList({searchTerm}:{searchTerm: string}) {
   
       const cocktails = response.data as Result[];
   
-      // setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount === 0))
-      setResults(cocktails)
+      setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount === 0))
+      // setResults(cocktails)
   
     }).catch(function (error: any) {
       console.error(error);
@@ -80,7 +80,7 @@ export function ResultItem({ result }: { result: Result }) {
       // sorting logic here
   
       const cocktails = response.data as Result;
-  
+
       // setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount === 0))
       setFullResults(cocktails)
   
