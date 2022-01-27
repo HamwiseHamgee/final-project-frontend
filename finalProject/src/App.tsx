@@ -2,14 +2,18 @@ import React from 'react';
 import './App.css';
 import Header from './Header';
 import SearchForm from './SearchForm';
-import Results from './Results';
+import {ResultList} from './Results';
+import { useState } from 'react'
 
 function App() {
+  const [searchTerm, setSearchTerm]= useState('')
+
+
   return (
     <div className="App">
       <Header/>
-      <SearchForm/>
-      <Results/>
+      <SearchForm setSearchTerm={setSearchTerm}/>
+      <ResultList searchTerm={searchTerm}/>
     </div>
   );
 }

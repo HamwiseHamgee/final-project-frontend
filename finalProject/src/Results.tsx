@@ -1,37 +1,94 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from 'axios'
 
 interface Result {
-  name: string;
-  thumbnail: string;
+  id: number,
+  title: string;
+  image: string;
+  missedIngredientCount: number,
   ingredients: string;
-  directions: string;
+  servings: number;
+  instructions: string;
   link: string;
   rating: number;
   favorite: boolean;
   hidden: boolean;
 }
 
-// function Results() {
-//     return(
-//     <div className='results'>
-//         <h2>Here are the drinks you can make</h2>
-//         <h2>Results based on ingredients</h2>
-//         <div className='tileContainer'>
-//             {/* tiles go here */}
-//         </div>
-//         <button className='crisisButton'>CRISIS BUTTON</button>
-//     </div>
-//     )
-// }
+export function ResultList({searchTerm}:{searchTerm: string}) {
+  const [results, setResults] = useState<Result[]>([])
 
-// export default Results
+  useEffect(() => {
+    const options = {
 
-function ResultItem({ result }: { result: Result }) {
+      params: {
+        ingredients: searchTerm,
+        number: '100',
+        ignorePantry: 'false',
+        ranking: '2',
+        type: 'drink'
+      },
+      headers: {
+        'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+        'x-rapidapi-key': 'bac5b9dc17msh2d4a352662dd6a7p190c49jsn86be79361b22'
+      }
+    };
+    
+    axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', options).then(function (response: any) {
+      console.log(response.data);
+      // sorting logic here
+  
+      const cocktails = response.data as Result[];
+  
+      // setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount === 0))
+      setResults(cocktails)
+  
+    }).catch(function (error: any) {
+      console.error(error);
+    });
+  }, [searchTerm])
+  return(
+    <div>
+      <h2>Results for {searchTerm}</h2>
+    {results.map((result) => {return <ResultItem key={result.id} result={result}></ResultItem>})}
+
+    </div>
+  )
+}
+
+export function ResultItem({ result }: { result: Result }) {
   const [hidden, setHidden] = useState(false);
 
   function toggleHidden() {
     setHidden(!hidden);
   }
+
+  const [fullResults, setFullResults] = useState<Result>(result)
+
+  useEffect(() => {
+    const options = {
+
+      headers: {
+        'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+        'x-rapidapi-key': 'bac5b9dc17msh2d4a352662dd6a7p190c49jsn86be79361b22'
+      }
+    };
+    
+
+    axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${result.id}/information`, options).then(function (response: any) {
+      console.log(response.data);
+      // sorting logic here
+  
+      const cocktails = response.data as Result;
+  
+      // setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount === 0))
+      setFullResults(cocktails)
+  
+    }).catch(function (error: any) {
+      console.error(error);
+    });
+  }, [])
+
 
   // toggle(index: number) {
 
@@ -42,16 +99,17 @@ function ResultItem({ result }: { result: Result }) {
   return (
     <ul className="resultsListContainer">
       <li>
-        <p>{result.name}</p>
-        <img src={result.thumbnail} onClick={toggleHidden}></img>
+        <p>{result.title}</p>
+        <img src={result.image} onClick={toggleHidden}></img>
+        {/* want to call API to search ID upon click */}
         {hidden === true && (
           <div className="moreDetailsContainer">
-            <p> {result.ingredients} </p>
-            <p> {result.directions} </p>
-            <p> {result.link} </p>
-            <p> {result.rating} </p>
+            <p> {fullResults.ingredients} </p>
+            <p> {fullResults.instructions} </p>
+            <p> {fullResults.link} </p>
+            <p> {fullResults.rating} </p>
             {/* might be image instead */}
-            <p> {result.favorite} </p>
+            <p> {fullResults.favorite} </p>
             {/* might be image instead */}
           </div>
         )}
@@ -69,5 +127,7 @@ function ResultItem({ result }: { result: Result }) {
 //     onClick={() => {handleDeleteIngredient(i)}}></img>
 //     </li>)
 // }
+
+
 
 export default ResultItem;

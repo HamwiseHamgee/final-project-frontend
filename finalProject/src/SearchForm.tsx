@@ -4,7 +4,7 @@ import searchIcon from './assets/searchIcon.png'
 import {useState} from 'react'
 import removeIcon from './assets/removeIcon.png'
 
-function SearchForm() {
+function SearchForm({setSearchTerm}:{setSearchTerm: Function}) {
   const [ingredients, setIngredients] = useState<Array<string>>([])
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -18,6 +18,8 @@ function SearchForm() {
 
   function clickSearch() {
     setSearchQuery(ingredients.toString())
+    // passing searchQuery up to App.tsx so that we can use it in ResultsList
+    setSearchTerm(ingredients.toString())
   }
 
   function clearIngredients() {
