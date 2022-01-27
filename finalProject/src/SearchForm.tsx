@@ -41,7 +41,7 @@ function handleDeleteIngredient(index: number) {
             <input type="text" placeholder="Type to search.." onChange={(e)=>setSearchQuery(e.target.value)}></input>
             <div className="icon">
               <img src={addIcon} alt='plus sign' onClick={addIngredient} ></img>
-              <img src={searchIcon} alt='search sign' className="fas fa-search" onClick={clickSearch}></img>
+              <img src={searchIcon} alt='search sign' onClick={clickSearch}></img>
             </div>
         </div>
       </div>
