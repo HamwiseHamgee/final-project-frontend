@@ -27,10 +27,9 @@ export function ResultList({searchTerm}:{searchTerm: string}) {
 
       params: {
         ingredients: searchTerm,
-        number: '5',
+        number: '30',
         ignorePantry: false,
         ranking: '2',
-        type: 'drink'
       },
       headers: {
         'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
