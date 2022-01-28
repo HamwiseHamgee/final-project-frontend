@@ -40,7 +40,12 @@ export function ResultList({searchTerm}:{searchTerm: string}) {
   
       const cocktails = response.data as Result[];
   
+<<<<<<< HEAD
       setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount < 5 && cocktail.id != 506555))
+=======
+
+      setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount <= 5 && cocktail.id != 506555))
+>>>>>>> 394372a113a844eebaec3490e3c678ce59672918
       // setResults(cocktails)
   
     }).catch(function (error: any) {
@@ -99,8 +104,11 @@ export function ResultItem({ result }: { result: Result }) {
   return (
     <ul className="resultsListContainer">
       <li>
+        <p>{result.id}</p>
         <p>{result.title}</p>
         <img src={result.image} onClick={toggleHidden}></img>
+        {result.missedIngredientCount === 1 && <p>You are missing 1 ingredient</p>}
+        {result.missedIngredientCount > 1 && <p>You are missing {result.missedIngredientCount} ingredients</p>}
         {/* want to call API to search ID upon click */}
         {hidden === true && (
           <div className="moreDetailsContainer">
