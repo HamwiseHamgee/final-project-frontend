@@ -1,19 +1,44 @@
-* { 
-	box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
-html, body {
-	min-height: 100%;
-	background: #fff;
-	color: #000;
+
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: lightblue;
 }
-	/* sets the body height of the browser, so that backgrounds and div heights work correctly. Color and background will almost certainly be altered; they are just placeholders */
-	
+
+html,
 body {
-	font-size: 1rem;
-	text-rendering: optimizeLegibility;
+    min-height: 100%;
+    background: #fff;
+    color: #000;
 }
-	/* sets the base font size for the document; turns on kerning pairs and ligatures */
-	
-body, ul, ol, dl {
-	margin: 0;
+
+
+/* sets the body height of the browser, so that backgrounds and div heights work correctly. Color and background will almost certainly be altered; they are just placeholders */
+
+body {
+    font-size: 1rem;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* sets the base font size for the document; turns on kerning pairs and ligatures */
+
+body,
+ul,
+ol,
+dl {
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .homeContainer {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        background-color: lightgreen;
+    }
 }

@@ -14,6 +14,7 @@ function SearchForm({setSearchTerm}:{setSearchTerm: Function}) {
 
   function addIngredient() {
     setIngredients(ingredients.concat(searchQuery))
+    
   }
 
   function clickSearch() {

@@ -23,7 +23,7 @@ export function ResultList({searchTerm}:{searchTerm: string}) {
 
       params: {
         ingredients: searchTerm,
-        number: '100',
+        number: '50',
         ignorePantry: 'false',
         ranking: '2',
         type: 'drink'
@@ -40,7 +40,7 @@ export function ResultList({searchTerm}:{searchTerm: string}) {
   
       const cocktails = response.data as Result[];
   
-      setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount === 0))
+      setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount < 5 && cocktail.id != 506555))
       // setResults(cocktails)
   
     }).catch(function (error: any) {
