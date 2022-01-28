@@ -1,7 +1,7 @@
 import './SearchForm.css'
 import addIcon from './assets/addIcon.png'
 import searchIcon from './assets/searchIcon.png'
-import {useState} from 'react'
+import {useState, useEffect } from 'react'
 import removeIcon from './assets/removeIcon.png'
 
 function SearchForm({setSearchTerm}:{setSearchTerm: Function}) {
@@ -9,18 +9,21 @@ function SearchForm({setSearchTerm}:{setSearchTerm: Function}) {
   const [searchQuery, setSearchQuery] = useState('')
 
   function clearSearchBox() {
-
+    setSearchQuery('')
   }
+
+  useEffect(() => {
+    activateSearch()
+  },[ingredients])
 
   function addIngredient() {
     setIngredients(ingredients.concat(searchQuery))
-    
+    clearSearchBox()
   }
 
-  function clickSearch() {
-    setSearchQuery(ingredients.toString())
-    // passing searchQuery up to App.tsx so that we can use it in ResultsList
+  function activateSearch() {
     setSearchTerm(ingredients.toString())
+    console.log(ingredients)
   }
 
   function clearIngredients() {
@@ -35,22 +38,20 @@ function handleDeleteIngredient(index: number) {
   ]);
 }
 
-
   return (
-    <body className='searchFormContainer'>
+    <div className='searchFormContainer'>
       <div className="wrapper">
         <div className="searchInput">
-            <a href="" target="_blank" hidden></a>
-            <input type="text" placeholder="Type to search.." onChange={(e)=>setSearchQuery(e.target.value)}></input>
-            <div className="icon">
+            <input type="text" value={searchQuery} placeholder="Type to search..." 
+            onChange={(e)=>setSearchQuery(e.target.value)}
+            onKeyPress={(e) => {(e.key === 'Enter' && addIngredient())}}>
+            </input>
               <img src={addIcon} alt='plus sign' onClick={addIngredient} ></img>
-              <img src={searchIcon} alt='search sign' onClick={clickSearch}></img>
-            </div>
         </div>
       </div>
 
       <div className='searchQueryContainer'>
-        <p>Your included ingredients</p>
+        <p className='ingredientsContainerTitle'>Your included ingredients</p>
         <div className='ingredientsContainer'>
             <ul className='ingredientsList'> 
               {
@@ -63,10 +64,10 @@ function handleDeleteIngredient(index: number) {
             }
             </ul>
         </div>
-        <button onClick={clearIngredients}>Remove All Ingredients</button>
+        <button id='removeAllButton' onClick={clearIngredients}>Remove All Ingredients</button>
       </div>
 
-    </body>
+    </div>
   );
 }
 

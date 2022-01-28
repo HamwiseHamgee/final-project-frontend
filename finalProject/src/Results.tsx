@@ -6,14 +6,18 @@ interface Result {
   title: string;
   image: string;
   missedIngredientCount: number,
-  ingredients: string;
+  extendedIngredients: any[];
   servings: number;
   instructions: string;
   link: string;
+  sourceName: string;
   rating: number;
+  sourceUrl: string;
   favorite: boolean;
   hidden: boolean;
 }
+
+// extended ingredients interface ?
 
 export function ResultList({searchTerm}:{searchTerm: string}) {
   const [results, setResults] = useState<Result[]>([])
@@ -23,8 +27,8 @@ export function ResultList({searchTerm}:{searchTerm: string}) {
 
       params: {
         ingredients: searchTerm,
-        number: '50',
-        ignorePantry: 'false',
+        number: '5',
+        ignorePantry: false,
         ranking: '2',
         type: 'drink'
       },
@@ -40,12 +44,10 @@ export function ResultList({searchTerm}:{searchTerm: string}) {
   
       const cocktails = response.data as Result[];
   
-<<<<<<< HEAD
-      setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount < 5 && cocktail.id != 506555))
-=======
 
-      setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount <= 5 && cocktail.id != 506555))
->>>>>>> 394372a113a844eebaec3490e3c678ce59672918
+      setResults(cocktails.filter( cocktail  => cocktail.missedIngredientCount <= 5 
+        && cocktail.id != 506555 
+        ))
       // setResults(cocktails)
   
     }).catch(function (error: any) {
@@ -92,7 +94,7 @@ export function ResultItem({ result }: { result: Result }) {
     }).catch(function (error: any) {
       console.error(error);
     });
-  }, [])
+  }, [result])
 
 
   // toggle(index: number) {
@@ -100,11 +102,19 @@ export function ResultItem({ result }: { result: Result }) {
   //     result.hidden[index] = !result.hidden[index]
   //     this.setState({ reviews })
   //   }
+  
+const hasAlcohol = fullResults.extendedIngredients?.some((ingredient) => {
+  console.log(ingredient);
+  const allowedIngredients = ['Alcoholic Beverages', 'Alcohol', 'Beverage', 'Beverages', 'Liquor', 'alcoholic beverages', 'alcohol', 'Party', 'party']
+  return allowedIngredients.includes(ingredient.aisle) 
+}  );
 
+console.log(fullResults.extendedIngredients);
+
+  if ( hasAlcohol ) {
   return (
     <ul className="resultsListContainer">
       <li>
-        <p>{result.id}</p>
         <p>{result.title}</p>
         <img src={result.image} onClick={toggleHidden}></img>
         {result.missedIngredientCount === 1 && <p>You are missing 1 ingredient</p>}
@@ -112,9 +122,13 @@ export function ResultItem({ result }: { result: Result }) {
         {/* want to call API to search ID upon click */}
         {hidden === true && (
           <div className="moreDetailsContainer">
-            <p> {fullResults.ingredients} </p>
+            <ul>{fullResults.extendedIngredients.map((ingredient: any) => {
+              return(
+                <li>{ingredient.originalString}</li>
+              )
+            })}</ul>
             <p> {fullResults.instructions} </p>
-            <p> {fullResults.link} </p>
+            <a href={fullResults.sourceUrl}> Original recipe at {fullResults.sourceName} </a>
             <p> {fullResults.rating} </p>
             {/* might be image instead */}
             <p> {fullResults.favorite} </p>
@@ -124,7 +138,9 @@ export function ResultItem({ result }: { result: Result }) {
       </li>
     </ul>
   );
-}
+} else {
+  return null;
+}}
 
 // <ul className='ingredientsList'>
 //   {
