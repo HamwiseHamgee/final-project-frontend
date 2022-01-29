@@ -20,8 +20,6 @@ interface Result {
   hidden: boolean;
 }
 
-// extended ingredients interface ?
-
 export function ResultList({ searchTerm }: { searchTerm: string }) {
   const [results, setResults] = useState<Result[]>([]);
 
@@ -111,21 +109,13 @@ export function ResultItem({ result }: { result: Result }) {
       });
   }, [result]);
 
-// function assignResultIndex() {
-//   for (let i = 0; i < 4; i++) {
-//     a[i] = new Array(4)
-//   }
-// }
-
 function flipTile() {
   let resultTile = document!.getElementById(`resultTile${result.id}`)
   resultTile!.classList.toggle('flip-tile')
 }
 
 function resultContent() {
-
   return (
-    
     <div onClick={flipTile} id={`resultTile${result.id}`} className="resultContainer">
       <div key={result.id} className='resultsContent'>
         <img className='resultImage' src={result.image}></img>
@@ -136,15 +126,17 @@ function resultContent() {
           {result.missedIngredientCount > 1 && (
           <p className='missingIngredientLabel'>You are missing {result.missedIngredientCount} ingredients</p>
           )}
-          {/* {hidden === true && ( */}
       </div>
       <div className="moreDetailsContainer">
-            {/* removed onClick={toggleHidden} above*/}
-        {fullResults.extendedIngredients.map((ingredient: any) => {
-          return <p className='extendedIngredientPart'>{ingredient.originalString}</p>;
-        })}
+        <ul className='extendedIngredientsList'>
+          {fullResults.extendedIngredients.map((ingredient: any) => {
+              return(
+                <li className='extendedIngredientsItem'>{ingredient.originalString}</li>
+              )
+          })}
+        </ul>
         <p className='instructions'> {fullResults.instructions} </p>
-        <a className='recipeLink' href={fullResults.sourceUrl}>
+        <a target='_blank' className='recipeLink' href={fullResults.sourceUrl}>
         {" "}
         Original recipe at {fullResults.sourceName}{" "}
         </a>
@@ -153,7 +145,6 @@ function resultContent() {
         <p className='favorite'> {fullResults.favorite} </p>
         {/* might be image instead */}
       </div>
-        {/* )} */}
     </div>
   );
 }
@@ -200,58 +191,45 @@ function resultContent() {
     return allowedIngredients.includes(ingredient.aisle);
   });
 
-  // console.log(fullResults);
-
   if (hasAlcohol) {
     return (
     <div className='row'>
-      <div className='firstColumn'>
-        {((result.index) % 3 == 0) &&
-        resultContent()}
-      </div>
-      <div className='secondColumn'>
+      {/* <div className='firstColumn'> */}
+        {/* {((result.index) % 3 == 0) &&
+        resultContent()} */}
+        {resultContent()}
+      {/* </div> */}
+      {/* <div className='secondColumn'>
         {((result.index) % 3 == 1) &&
         resultContent()}
-      </div>
-      <div className='thirdColumn'>
+      </div> */}
+      {/* <div className='thirdColumn'>
         {((result.index) % 3 == 2) &&
         resultContent()}
-      </div>
+      </div> */}
     </div>
     );
   } else if (hasDishType) {
     return (
     <div className='row'>
       <div className='firstColumn'>
-        {((result.index) % 3 == 0) &&
-        resultContent()}
+        {/* {((result.index) % 3 == 0) &&
+        resultContent()} */}
+        {resultContent()}
       </div>
-      <div className='secondColumn'>
+      {/* <div className='secondColumn'>
         {((result.index) % 3 == 1) &&
         resultContent()}
-      </div>
-      <div className='thirdColumn'>
+      </div> */}
+      {/* <div className='thirdColumn'>
         {((result.index) % 3 == 2) &&
         resultContent()}
-      </div>
+      </div> */}
     </div>
     );
   } else {
     return null;
   }
 }
-
-
-
-
-// <ul className='ingredientsList'>
-//   {
-//     ingredients.map((ingredient, i) =>
-//     <li key={i}>
-//     {ingredient}
-//     <img  key={i} src={removeIcon} alt='remove button'
-//     onClick={() => {handleDeleteIngredient(i)}}></img>
-//     </li>)
-// }
 
 export default ResultItem;

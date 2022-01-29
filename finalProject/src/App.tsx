@@ -17,10 +17,10 @@ function App() {
       <Header/>
         <div className='homeContainer'> 
           
-          <SearchForm setSearchTerm={setSearchTerm}/>
-          <div className='resultsGrid'>
+            <SearchForm setSearchTerm={setSearchTerm}/>
+          {/* <div className='resultsGrid'> */}
             <ResultList searchTerm={searchTerm}/>
-          </div>
+          {/* </div> */}
         </div>
 
 
