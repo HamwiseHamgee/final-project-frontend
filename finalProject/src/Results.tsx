@@ -123,7 +123,9 @@ function flipTile() {
 }
 
 function resultContent() {
+
   return (
+    
     <div onClick={flipTile} id={`resultTile${result.id}`} className="resultContainer">
       <div key={result.id} className='resultsContent'>
         <img className='resultImage' src={result.image}></img>
