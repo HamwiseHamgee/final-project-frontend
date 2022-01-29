@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import './Results.css'
 
 interface Result {
   id: number;
+  index: number;
   title: string;
   image: string;
   missedIngredientCount: number;
@@ -64,8 +66,9 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
   return (
     <div>
       <h2>Results for {searchTerm}</h2>
-      {results.map((result) => {
-        return <ResultItem key={result.id} result={result}></ResultItem>;
+      {results.map((result, index) => {
+        result.index=index
+        return <ResultItem key={result.id} result={result} ></ResultItem>;
       })}
     </div>
   );
@@ -108,14 +111,50 @@ export function ResultItem({ result }: { result: Result }) {
       });
   }, [result]);
 
-  // toggle(index: number) {
+// function assignResultIndex() {
+//   for (let i = 0; i < 4; i++) {
+//     a[i] = new Array(4)
+//   }
+// }
 
-  //     result.hidden[index] = !result.hidden[index]
-  //     this.setState({ reviews })
-  //   }
+function flipTile() {
+  let resultTile = document!.getElementById(`resultTile${result.id}`)
+  resultTile!.classList.toggle('flip-tile')
+}
 
-  // jan 27 left off here
-  // Check for dishType as alcohol first before allowedIngredients of alcohol
+function resultContent() {
+  return (
+    <div onClick={flipTile} id={`resultTile${result.id}`} className="resultContainer">
+      <div key={result.id} className='resultsContent'>
+        <img className='resultImage' src={result.image}></img>
+          <p className="resultTitle">{result.title} {result.index}</p>
+          {result.missedIngredientCount === 1 && (
+            <p className='missingIngredientLabel'>You are missing 1 ingredient</p>
+          )}
+          {result.missedIngredientCount > 1 && (
+          <p className='missingIngredientLabel'>You are missing {result.missedIngredientCount} ingredients</p>
+          )}
+          {/* {hidden === true && ( */}
+      </div>
+      <div className="moreDetailsContainer">
+            {/* removed onClick={toggleHidden} above*/}
+        {fullResults.extendedIngredients.map((ingredient: any) => {
+          return <p className='extendedIngredientPart'>{ingredient.originalString}</p>;
+        })}
+        <p className='instructions'> {fullResults.instructions} </p>
+        <a className='recipeLink' href={fullResults.sourceUrl}>
+        {" "}
+        Original recipe at {fullResults.sourceName}{" "}
+        </a>
+        <p className='rating'> {fullResults.rating} </p>
+        {/* might be image instead */}
+        <p className='favorite'> {fullResults.favorite} </p>
+        {/* might be image instead */}
+      </div>
+        {/* )} */}
+    </div>
+  );
+}
 
   const hasDishType = fullResults.dishTypes?.some((ingredient) => {
     console.log(ingredient);
@@ -159,80 +198,23 @@ export function ResultItem({ result }: { result: Result }) {
     return allowedIngredients.includes(ingredient.aisle);
   });
 
-  console.log(fullResults);
+  // console.log(fullResults);
 
   if (hasAlcohol) {
     return (
-      <ul className="resultsListContainer">
-        <li>
-          <p>{result.title}</p>
-          <img src={result.image} onClick={toggleHidden}></img>
-          {result.missedIngredientCount === 1 && (
-            <p>You are missing 1 ingredient</p>
-          )}
-          {result.missedIngredientCount > 1 && (
-            <p>You are missing {result.missedIngredientCount} ingredients</p>
-          )}
-          {/* want to call API to search ID upon click */}
-          {hidden === true && (
-            <div className="moreDetailsContainer">
-              <ul>
-                {fullResults.extendedIngredients.map((ingredient: any) => {
-                  return <li>{ingredient.originalString}</li>;
-                })}
-              </ul>
-              <p> {fullResults.instructions} </p>
-              <a href={fullResults.sourceUrl}>
-                {" "}
-                Original recipe at {fullResults.sourceName}{" "}
-              </a>
-              <p> {fullResults.rating} </p>
-              {/* might be image instead */}
-              <p> {fullResults.favorite} </p>
-              {/* might be image instead */}
-            </div>
-          )}
-        </li>
-      </ul>
+      resultContent()
     );
   } else if (hasDishType) {
     return (
-      <ul className="resultsListContainer">
-        <li>
-          <p>{result.title}</p>
-          <img src={result.image} onClick={toggleHidden}></img>
-          {result.missedIngredientCount === 1 && (
-            <p>You are missing 1 ingredient</p>
-          )}
-          {result.missedIngredientCount > 1 && (
-            <p>You are missing {result.missedIngredientCount} ingredients</p>
-          )}
-          {/* want to call API to search ID upon click */}
-          {hidden === true && (
-            <div className="moreDetailsContainer">
-              <ul>
-                {fullResults.extendedIngredients.map((ingredient: any) => {
-                  return <li>{ingredient.originalString}</li>;
-                })}
-              </ul>
-              <p> {fullResults.instructions} </p>
-              <a href={fullResults.sourceUrl}>
-                {" "}
-                Original recipe at {fullResults.sourceName}{" "}
-              </a>
-              <p> {fullResults.rating} </p>
-              {/* might be image instead */}
-              <p> {fullResults.favorite} </p>
-              {/* might be image instead */}
-            </div>
-          )}
-        </li>
-      </ul>
+      resultContent()
     );
   } else {
     return null;
   }
 }
+
+
+
 
 // <ul className='ingredientsList'>
 //   {
