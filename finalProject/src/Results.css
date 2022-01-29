@@ -21,7 +21,7 @@
     }
     .resultsContent {
         display: flex;
-        justify-content: center;
+        /* justify-content: center; */
         align-items: center;
         background-color: pink;
         padding: 5px;
@@ -60,5 +60,26 @@
     }
     .flip-tile {
         transform: rotateY(180deg);
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+        width: 66vw;
+    }
+    .firstColumn {
+        flex: 33%;
+        width: 33%;
+        padding: 0 4px;
+    }
+    .secondColumn {
+        flex: 33%;
+        width: 33%;
+        padding: 0 4px;
+    }
+    .thirdColumn {
+        flex: 33%;
+        width: 33%;
+        padding: 0 4px;
     }
 }

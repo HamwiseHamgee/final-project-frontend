@@ -202,11 +202,37 @@ function resultContent() {
 
   if (hasAlcohol) {
     return (
-      resultContent()
+    <div className='row'>
+      <div className='firstColumn'>
+        {((result.index) % 3 == 0) &&
+        resultContent()}
+      </div>
+      <div className='secondColumn'>
+        {((result.index) % 3 == 1) &&
+        resultContent()}
+      </div>
+      <div className='thirdColumn'>
+        {((result.index) % 3 == 2) &&
+        resultContent()}
+      </div>
+    </div>
     );
   } else if (hasDishType) {
     return (
-      resultContent()
+    <div className='row'>
+      <div className='firstColumn'>
+        {((result.index) % 3 == 0) &&
+        resultContent()}
+      </div>
+      <div className='secondColumn'>
+        {((result.index) % 3 == 1) &&
+        resultContent()}
+      </div>
+      <div className='thirdColumn'>
+        {((result.index) % 3 == 2) &&
+        resultContent()}
+      </div>
+    </div>
     );
   } else {
     return null;
