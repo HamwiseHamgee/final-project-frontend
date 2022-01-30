@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import './Results.css';
 
 interface Result {
   id: number;
@@ -161,7 +162,7 @@ export function ResultItem({ result }: { result: Result }) {
 
   console.log(fullResults);
 
-  if (hasAlcohol) {
+  function resultsListContainer()  {
     return (
       <ul className="resultsListContainer">
         <li>
@@ -195,39 +196,15 @@ export function ResultItem({ result }: { result: Result }) {
         </li>
       </ul>
     );
+  };
+
+  if (hasAlcohol) {
+    return (
+      resultsListContainer()
+    );
   } else if (hasDishType) {
     return (
-      <ul className="resultsListContainer">
-        <li>
-          <p>{result.title}</p>
-          <img src={result.image} onClick={toggleHidden}></img>
-          {result.missedIngredientCount === 1 && (
-            <p>You are missing 1 ingredient</p>
-          )}
-          {result.missedIngredientCount > 1 && (
-            <p>You are missing {result.missedIngredientCount} ingredients</p>
-          )}
-          {/* want to call API to search ID upon click */}
-          {hidden === true && (
-            <div className="moreDetailsContainer">
-              <ul>
-                {fullResults.extendedIngredients.map((ingredient: any) => {
-                  return <li>{ingredient.originalString}</li>;
-                })}
-              </ul>
-              <p> {fullResults.instructions} </p>
-              <a href={fullResults.sourceUrl}>
-                {" "}
-                Original recipe at {fullResults.sourceName}{" "}
-              </a>
-              <p> {fullResults.rating} </p>
-              {/* might be image instead */}
-              <p> {fullResults.favorite} </p>
-              {/* might be image instead */}
-            </div>
-          )}
-        </li>
-      </ul>
+      resultsListContainer()
     );
   } else {
     return null;
