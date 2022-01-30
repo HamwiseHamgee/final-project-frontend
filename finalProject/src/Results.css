@@ -1,37 +1,26 @@
 @media (min-width: 768px) {
     /* .resultsGrid {
-        display: flex;
-        display: grid;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        flex-basis: 33.333333%;
-        background-color: white;
-        width: 66vw;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-gap: 15px;
-        padding: 10px;
-        width: 66vw;
     } */
     .resultContainer {
         position: relative;
         transform-style: preserve-3d;
-        transition: all 0.8s ease;
+        transition: all 0.5s ease-out;
+        /* max-height: 100%; */
     }
     .resultsContent {
         display: flex;
         /* justify-content: center; */
         align-items: center;
-        background-color: pink;
+        background-color: #718f94;
+        /* background-color: #8a3518; */
         padding: 5px;
         backface-visibility: hidden;
         text-align: center;
         position: relative;
         top: 0;
         left: 0;
-        backface-visibility: hidden;
-        text-align: center;
+        border-radius: 10px;
+        height: 100%;
     }
     .resultImage {
         position: relative;
@@ -39,14 +28,17 @@
     .resultTitle {
         position: absolute;
         top: 5px;
-        width: 20vw;
+        width: 100%;
         left: 5px;
         justify-content: center;
+    }
+    .extendedIngredientsList {
+        color: black;
     }
     .missingIngredientLabel {
         position: absolute;
         bottom: 5px;
-        width: 20vw;
+        width: 100%;
         left: 5px;
         justify-content: center;
     }
@@ -54,38 +46,39 @@
         position: absolute;
         top: 0;
         left: 0;
+        padding: 5px;
         backface-visibility: hidden;
+        /* background-color: #8a3518; */
+        background-color: #718f94;
         /* text-align: center; */
         transform: rotateY(180deg);
         overflow-y: auto;
-        max-height: auto;
+        overflow-x: hidden;
+        height: 231px;
+        width: 312px;
+    }
+    .moreDetailsContainer img {
+        transform: rotateY(180deg);
+        opacity: 0.15;
+        position: absolute;
+        height: 231px;
+        width: 312px;
     }
     .flip-tile {
         transform: rotateY(180deg);
     }
-    .row {
+    .grid {
         display: grid;
-        grid-auto-flow: row dense;
-        padding: 0 4px;
-        width: 66vw;
+        grid-auto-flow: row;
+        padding: 4px 4px;
+        /* width: 66vw; */
+        /* grid-template-columns: repeat(3, 1fr); */
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(1, 1fr);
         grid-gap: 15px;
-        /* padding: 10px; */
     }
-    .firstColumn {
-        /* flex: 33%;
-        width: 33%;
-        padding: 0 4px; */
-    }
-    .secondColumn {
-        flex: 33%;
-        width: 33%;
-        padding: 0 4px;
-    }
-    .thirdColumn {
-        flex: 33%;
-        width: 33%;
-        padding: 0 4px;
+    .grid>* {
+        grid-column-end: span 1;
+        grid-row-end: span 1;
     }
 }

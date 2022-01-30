@@ -66,7 +66,6 @@ function handleDeleteIngredient(index: number) {
         </div>
         <button id='removeAllButton' onClick={clearIngredients}>Remove All Ingredients</button>
       </div>
-
     </div>
   );
 }

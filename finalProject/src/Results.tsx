@@ -128,7 +128,9 @@ function resultContent() {
           )}
       </div>
       <div className="moreDetailsContainer">
+        <img className='resultImage' src={result.image}></img>
         <ul className='extendedIngredientsList'>
+          {/* Ingredients list not showing */}
           {fullResults.extendedIngredients.map((ingredient: any) => {
               return(
                 <li className='extendedIngredientsItem'>{ingredient.originalString}</li>
@@ -191,42 +193,14 @@ function resultContent() {
     return allowedIngredients.includes(ingredient.aisle);
   });
 
-  if (hasAlcohol) {
+  if (hasAlcohol || hasDishType)  {
     return (
-    <div className='row'>
-      {/* <div className='firstColumn'> */}
-        {/* {((result.index) % 3 == 0) &&
-        resultContent()} */}
+      <div className='grid'>
+        <div className='gridItem'>
         {resultContent()}
-      {/* </div> */}
-      {/* <div className='secondColumn'>
-        {((result.index) % 3 == 1) &&
-        resultContent()}
-      </div> */}
-      {/* <div className='thirdColumn'>
-        {((result.index) % 3 == 2) &&
-        resultContent()}
-      </div> */}
-    </div>
-    );
-  } else if (hasDishType) {
-    return (
-    <div className='row'>
-      <div className='firstColumn'>
-        {/* {((result.index) % 3 == 0) &&
-        resultContent()} */}
-        {resultContent()}
+       </div>
       </div>
-      {/* <div className='secondColumn'>
-        {((result.index) % 3 == 1) &&
-        resultContent()}
-      </div> */}
-      {/* <div className='thirdColumn'>
-        {((result.index) % 3 == 2) &&
-        resultContent()}
-      </div> */}
-    </div>
-    );
+    )
   } else {
     return null;
   }

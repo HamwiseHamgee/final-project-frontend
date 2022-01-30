@@ -43,4 +43,15 @@ dl {
         /* justify-content: flex-start; */
         align-items: flex-start;
     }
+    .grid {
+        display: grid;
+        grid-auto-flow: row dense;
+        padding: 0 4px;
+        /* width: 66vw; */
+        /* grid-template-columns: repeat(3, 1fr); */
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-gap: 25px;
+        /* padding: 10px; */
+    }
 }
