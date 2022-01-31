@@ -132,9 +132,8 @@ function resultContent() {
         <ul className='extendedIngredientsList'>
           {/* Ingredients list not showing */}
           {fullResults.extendedIngredients.map((ingredient: any) => {
-            console.log(ingredient.extendedIngredients);
               return(
-                <li className='extendedIngredientsItem'>{ingredient.originalName} - {ingredient.measures.us.amount} {ingredient.measures.us.unitLong} </li>
+                <li className='extendedIngredientsItem'>{ingredient.originalName}, {ingredient.measures.us.amount} {ingredient.measures.us.unitLong} </li>
               )
           })}
         </ul>
@@ -194,19 +193,21 @@ function resultContent() {
     return allowedIngredients.includes(ingredient.aisle);
   });
 
-  
-  
-  if (hasAlcohol || hasDishType)  {
+  function returnGridItem() {
+    if (hasAlcohol || hasDishType)  {
+      return (
+          resultContent()
+      )
+    } else {
+      return null;
+    }
+  }
+
     return (
       <div className='grid'>
-        <div className='gridItem'>
-        {resultContent()}
-       </div>
+        {returnGridItem()}
       </div>
     )
-  } else {
-    return null;
-  }
 }
 
 export default ResultItem;
