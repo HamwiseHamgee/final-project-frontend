@@ -18,12 +18,10 @@ function App() {
         <div className='homeContainer'> 
           
             <SearchForm setSearchTerm={setSearchTerm}/>
-          {/* <div className='grid'> */}
             <ResultList searchTerm={searchTerm}/>
-          {/* </div> */}
+
         </div>
-
-
+        
     </div>
   );
 }

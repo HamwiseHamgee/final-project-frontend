@@ -1,5 +1,5 @@
-* { 
-	box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
 header {
@@ -13,8 +13,6 @@ header {
     height: 7rem;
     color: #e2bb54;
     flex-direction: row;
-    
-    
 }
 
 .titleContainer {
@@ -23,14 +21,14 @@ header {
     flex-grow: 2;
     padding: 0;
     margin: 0 0 0 1rem;
-    
 }
 
 .titles {
     font-weight: normal;
 }
 
-h1, h2 {
+h1,
+h2 {
     margin: 0;
 }
 
@@ -42,7 +40,6 @@ h1, h2 {
     text-align: center;
     vertical-align: middle;
     line-height: 7rem;
-    
 }
 
 a {
@@ -51,19 +48,22 @@ a {
 }
 
 #home {
-    background-color: #718f94;
+    /* background-color: #718f94; */
+    background-image: linear-gradient(to bottom right, #718f94, #629199);
     color: #e2bb54;
     flex-grow: 1;
 }
 
 #logIn {
-    background-color: #8a3518;
+    /* background-color: #8a3518; */
+    background-image: linear-gradient(to bottom right, #8a3518, #a83e1b);
     color: #e2bb54;
     flex-grow: 1;
 }
 
 #favorites {
     background-color: #606b4d;
+    background-image: linear-gradient(to bottom right, #606b4d, #778560);
     color: #e2bb54;
     flex-grow: 1;
 }

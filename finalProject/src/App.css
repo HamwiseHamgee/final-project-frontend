@@ -6,7 +6,16 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: lightblue;
+    /* background-color: lightblue; */
+    background-image: url("assets/background-tiles.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.resultsListContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 html,
@@ -39,19 +48,8 @@ dl {
         display: flex;
         flex-direction: row;
         width: 100%;
-        background-color: lightgreen;
+        /* background-color: lightgreen; */
         /* justify-content: flex-start; */
         align-items: flex-start;
-    }
-    .grid {
-        display: grid;
-        grid-auto-flow: row dense;
-        padding: 0 4px;
-        /* width: 66vw; */
-        /* grid-template-columns: repeat(3, 1fr); */
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(1, 1fr);
-        grid-gap: 25px;
-        /* padding: 10px; */
     }
 }

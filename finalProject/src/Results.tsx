@@ -128,12 +128,12 @@ function resultContent() {
           )}
       </div>
       <div className="moreDetailsContainer">
-        <img className='resultImage' src={result.image}></img>
+        <img className='resultBackImage' src={result.image}></img>
         <ul className='extendedIngredientsList'>
           {/* Ingredients list not showing */}
           {fullResults.extendedIngredients.map((ingredient: any) => {
               return(
-                <li className='extendedIngredientsItem'>{ingredient.originalString}</li>
+                <li className='extendedIngredientsItem'>{ingredient.originalName}, {ingredient.measures.us.amount} {ingredient.measures.us.unitLong} </li>
               )
           })}
         </ul>
@@ -193,17 +193,21 @@ function resultContent() {
     return allowedIngredients.includes(ingredient.aisle);
   });
 
-  if (hasAlcohol || hasDishType)  {
+  function returnGridItem() {
+    if (hasAlcohol || hasDishType)  {
+      return (
+          resultContent()
+      )
+    } else {
+      return null;
+    }
+  }
+
     return (
       <div className='grid'>
-        <div className='gridItem'>
-        {resultContent()}
-       </div>
+        {returnGridItem()}
       </div>
     )
-  } else {
-    return null;
-  }
 }
 
 export default ResultItem;
