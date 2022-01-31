@@ -4,6 +4,7 @@ import Header from "./Header";
 import SearchForm from "./SearchForm";
 import { ResultList } from "./Results";
 import { useState } from "react";
+import "./Results.css";
 // import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
@@ -14,9 +15,9 @@ function App() {
       <Header />
       <div className="homeContainer">
         <SearchForm setSearchTerm={setSearchTerm} />
-        <div className="resultsListContainer">
-          <ResultList searchTerm={searchTerm} />
-        </div>
+        {/* <div className='resultsGrid'> */}
+        <ResultList searchTerm={searchTerm} />
+        {/* </div> */}
       </div>
     </div>
   );

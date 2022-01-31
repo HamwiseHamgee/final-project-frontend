@@ -1,37 +1,36 @@
-* {
-    box-sizing: border-box;
+import * {
+  box-sizing: border-box;
 }
 
-
-
 .homeContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* background-color: lightblue; */
+  background-image: url("assets/background-tiles.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .resultsListContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 html,
 body {
-    min-height: 100%;
-    background: #fff;
-    color: #000;
+  min-height: 100%;
+  background: #fff;
+  color: #000;
 }
-
 
 /* sets the body height of the browser, so that backgrounds and div heights work correctly. Color and background will almost certainly be altered; they are just placeholders */
 
 body {
-    font-size: 1rem;
-    text-rendering: optimizeLegibility;
+  font-size: 1rem;
+  text-rendering: optimizeLegibility;
 }
-
 
 /* sets the base font size for the document; turns on kerning pairs and ligatures */
 
@@ -39,16 +38,17 @@ body,
 ul,
 ol,
 dl {
-    margin: 0;
+  margin: 0;
 }
 
 @media (min-width: 768px) {
-    .homeContainer {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        background-color: lightgreen;
-        /* justify-content: flex-start; */
-        align-items: flex-start;
-    }
+  .homeContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* background-color: lightgreen; */
+
+    /* justify-content: flex-start; */
+    align-items: flex-start;
+  }
 }

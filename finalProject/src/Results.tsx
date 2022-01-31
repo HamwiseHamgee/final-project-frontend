@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import './Results.css';
+import './Results.css'
 
 interface Result {
   id: number;
+  index: number;
   title: string;
   image: string;
   missedIngredientCount: number;
@@ -18,8 +19,6 @@ interface Result {
   favorite: boolean;
   hidden: boolean;
 }
-
-// extended ingredients interface ?
 
 export function ResultList({ searchTerm }: { searchTerm: string }) {
   const [results, setResults] = useState<Result[]>([]);
@@ -65,8 +64,9 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
   return (
     <div>
       <h2>Results for {searchTerm}</h2>
-      {results.map((result) => {
-        return <ResultItem key={result.id} result={result}></ResultItem>;
+      {results.map((result, index) => {
+        result.index=index
+        return <ResultItem key={result.id} result={result} ></ResultItem>;
       })}
     </div>
   );
@@ -109,14 +109,48 @@ export function ResultItem({ result }: { result: Result }) {
       });
   }, [result]);
 
-  // toggle(index: number) {
+function flipTile() {
+  let resultTile = document!.getElementById(`resultTile${result.id}`)
+  resultTile!.classList.toggle('flip-tile')
+}
 
-  //     result.hidden[index] = !result.hidden[index]
-  //     this.setState({ reviews })
-  //   }
-
-  // jan 27 left off here
-  // Check for dishType as alcohol first before allowedIngredients of alcohol
+function resultContent() {
+  return (
+    <div onClick={flipTile} id={`resultTile${result.id}`} className="resultContainer">
+      <div key={result.id} className='resultsContent'>
+        <img className='resultImage' src={result.image}></img>
+          <p className="resultTitle">{result.title} {result.index}</p>
+          {result.missedIngredientCount === 1 && (
+            <p className='missingIngredientLabel'>You are missing 1 ingredient</p>
+          )}
+          {result.missedIngredientCount > 1 && (
+          <p className='missingIngredientLabel'>You are missing {result.missedIngredientCount} ingredients</p>
+          )}
+      </div>
+      <div className="moreDetailsContainer">
+        <img className='resultBackImage' src={result.image}></img>
+        <ul className='extendedIngredientsList'>
+          {/* Ingredients list not showing */}
+          {fullResults.extendedIngredients.map((ingredient: any) => {
+            console.log(ingredient.extendedIngredients);
+              return(
+                <li className='extendedIngredientsItem'>{ingredient.originalName} - {ingredient.measures.us.amount} {ingredient.measures.us.unitLong} </li>
+              )
+          })}
+        </ul>
+        <p className='instructions'> {fullResults.instructions} </p>
+        <a target='_blank' className='recipeLink' href={fullResults.sourceUrl}>
+        {" "}
+        Original recipe at {fullResults.sourceName}{" "}
+        </a>
+        <p className='rating'> {fullResults.rating} </p>
+        {/* might be image instead */}
+        <p className='favorite'> {fullResults.favorite} </p>
+        {/* might be image instead */}
+      </div>
+    </div>
+  );
+}
 
   const hasDishType = fullResults.dishTypes?.some((ingredient) => {
     console.log(ingredient);
@@ -160,65 +194,19 @@ export function ResultItem({ result }: { result: Result }) {
     return allowedIngredients.includes(ingredient.aisle);
   });
 
-  console.log(fullResults);
-
-  function resultsListContainer()  {
+  
+  
+  if (hasAlcohol || hasDishType)  {
     return (
-      <ul className="resultsListContainer">
-        <li>
-          <p>{result.title}</p>
-          <img src={result.image} onClick={toggleHidden}></img>
-          {result.missedIngredientCount === 1 && (
-            <p>You are missing 1 ingredient</p>
-          )}
-          {result.missedIngredientCount > 1 && (
-            <p>You are missing {result.missedIngredientCount} ingredients</p>
-          )}
-          {/* want to call API to search ID upon click */}
-          {hidden === true && (
-            <div className="moreDetailsContainer">
-              <ul>
-                {fullResults.extendedIngredients.map((ingredient: any) => {
-                  return <li>{ingredient.originalString}</li>;
-                })}
-              </ul>
-              <p> {fullResults.instructions} </p>
-              <a href={fullResults.sourceUrl}>
-                {" "}
-                Original recipe at {fullResults.sourceName}{" "}
-              </a>
-              <p> {fullResults.rating} </p>
-              {/* might be image instead */}
-              <p> {fullResults.favorite} </p>
-              {/* might be image instead */}
-            </div>
-          )}
-        </li>
-      </ul>
-    );
-  };
-
-  if (hasAlcohol) {
-    return (
-      resultsListContainer()
-    );
-  } else if (hasDishType) {
-    return (
-      resultsListContainer()
-    );
+      <div className='grid'>
+        <div className='gridItem'>
+        {resultContent()}
+       </div>
+      </div>
+    )
   } else {
     return null;
   }
 }
-
-// <ul className='ingredientsList'>
-//   {
-//     ingredients.map((ingredient, i) =>
-//     <li key={i}>
-//     {ingredient}
-//     <img  key={i} src={removeIcon} alt='remove button'
-//     onClick={() => {handleDeleteIngredient(i)}}></img>
-//     </li>)
-// }
 
 export default ResultItem;

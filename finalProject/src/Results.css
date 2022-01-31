@@ -1,0 +1,145 @@
+.resultsContent {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: #718f94;
+    /* background-color: #8a3518; */
+    padding: 5px;
+    backface-visibility: hidden;
+    text-align: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    width: 90vw;
+    height: 100%;
+}
+
+.resultImage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.resultTitle {
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    left: 5px;
+    justify-content: center;
+}
+
+.extendedIngredientsList {
+    color: black;
+}
+
+.missingIngredientLabel {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    left: 5px;
+    justify-content: center;
+}
+
+.moreDetailsContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    backface-visibility: hidden;
+    /* background-color: #8a3518; */
+    background-color: #718f94;
+    /* text-align: center; */
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 90vw;
+    height: 100%;
+}
+
+.moreDetailsContainer img {
+    transform: rotateY(180deg);
+    opacity: 0.15;
+    position: absolute;
+    width: 90vw;
+    height: 100%;
+}
+
+.flip-tile {
+    transform: rotateY(180deg);
+}
+
+.grid {
+    display: grid;
+    grid-auto-flow: row;
+    padding: 4px 4px;
+    /* width: 66vw; */
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    /* grid-gap: 15px; */
+}
+
+.gridItem {
+    grid-column-end: span 1;
+    grid-row-end: span 1;
+}
+
+.resultContainer {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-out;
+    /* max-height: 100%; */
+}
+
+.resultBackImage {
+    z-index: -1;
+}
+
+.recipeLink {
+    z-index: +1;
+}
+
+@media (min-width: 768px) {
+    .resultsContent {
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        background-color: #718f94;
+        /* background-color: #8a3518; */
+        padding: 5px;
+        backface-visibility: hidden;
+        text-align: center;
+        position: relative;
+        top: 0;
+        left: 0;
+        border-radius: 10px;
+        height: 100%;
+        height: 231px;
+        width: 312px;
+    }
+    .resultImage {
+        position: relative;
+    }
+    .resultTitle {
+        position: absolute;
+        top: 5px;
+        width: 100%;
+        left: 5px;
+        justify-content: center;
+    }
+    .moreDetailsContainer {
+        padding: 5px;
+        height: 231px;
+        width: 312px;
+    }
+    .moreDetailsContainer img {
+        height: 231px;
+        width: 312px;
+    }
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-gap: 15px;
+    }
+}
