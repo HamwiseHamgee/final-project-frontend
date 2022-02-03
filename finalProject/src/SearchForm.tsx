@@ -40,6 +40,9 @@ function handleDeleteIngredient(index: number) {
 
   return (
     <div className='searchFormContainer'>
+      <div className='searchFormTitleContainer'>
+        <h1 className='searchFormTitle'>Ingredients</h1>
+      </div>
       <div className="wrapper">
         <div className="searchInput">
             <input type="text" value={searchQuery} placeholder="Type to search..." 

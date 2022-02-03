@@ -1,4 +1,8 @@
 import "./Header.css";
+import Login from './Login'
+import React, { useState } from 'react'
+
+// const [showLogin, setShowLogin] = useState(false);
 
 function Header() {
   return (
@@ -9,7 +13,13 @@ function Header() {
       </div>
       <nav className="navContainer">
         <a id='home' href="">Home</a>
-        <a id='logIn' href="">Log in</a>
+        {/* <div className='loginContainer'> */}
+          <a className='loginButton' 
+          id='logIn'
+          // onClick={() => setShowLogin(true) }
+          >Log in</a>
+          {/* <Login onClose={() => setShowLogin(false)} showLogin={showLogin}></Login> */}
+        {/* </div> */}
         <a id='favorites' href="">Favorites</a>
       </nav>
     </header>

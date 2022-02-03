@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import './Results.css'
+import "./Results.css";
 
 interface Result {
   id: number;
@@ -8,6 +8,7 @@ interface Result {
   title: string;
   image: string;
   missedIngredientCount: number;
+  missedIngredients: any[];
   extendedIngredients: any[];
   dishTypes: any[];
   servings: number;
@@ -44,6 +45,7 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
         options
       )
       .then(function (response: any) {
+        console.log("First Response ResultList");
         console.log(response.data);
         // sorting logic here
 
@@ -62,12 +64,15 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
       });
   }, [searchTerm]);
   return (
-    <div>
-      <h2>Results for {searchTerm}</h2>
-      {results.map((result, index) => {
-        result.index=index
-        return <ResultItem key={result.id} result={result} ></ResultItem>;
-      })}
+    <div className='gridContainer'>
+      <h1 className='resultsHeader'>Cocktails</h1>
+      {/* <h2>Results for {searchTerm}</h2> */}
+      <div className="grid">
+        {results.map((result, index) => {
+          result.index = index;
+          return <ResultItem key={result.id} result={result}></ResultItem>;
+        })}
+      </div>
     </div>
   );
 }
@@ -109,47 +114,69 @@ export function ResultItem({ result }: { result: Result }) {
       });
   }, [result]);
 
-function flipTile() {
-  let resultTile = document!.getElementById(`resultTile${result.id}`)
-  resultTile!.classList.toggle('flip-tile')
-}
+  function flipTile() {
+    let resultTile = document!.getElementById(`resultTile${result.id}`);
+    resultTile!.classList.toggle("flip-tile");
+  }
 
-function resultContent() {
-  return (
-    <div onClick={flipTile} id={`resultTile${result.id}`} className="resultContainer">
-      <div key={result.id} className='resultsContent'>
-        <img className='resultImage' src={result.image}></img>
-          <p className="resultTitle">{result.title} {result.index}</p>
-          {result.missedIngredientCount === 1 && (
-            <p className='missingIngredientLabel'>You are missing 1 ingredient</p>
-          )}
-          {result.missedIngredientCount > 1 && (
-          <p className='missingIngredientLabel'>You are missing {result.missedIngredientCount} ingredients</p>
-          )}
+  function resultContent() {
+    return (
+      <div
+        onClick={flipTile}
+        id={`resultTile${result.id}`}
+        className="resultContainer"
+      >
+        <div key={result.id} className="resultsContent">
+          <img className="resultImage" src={result.image}></img>
+          <div className="resultTitleContainer">
+            <p className="resultTitle">{result.title}</p>
+          </div>
+          {/* <div className="missingIngredientLabelContainer"> */}
+            {result.missedIngredientCount === 1 &&
+              result.missedIngredients.map((missedIngredient: any) => {
+                return (
+                  <p className="missingIngredientLabel">
+                    You are missing:
+                    {missedIngredient.originalName}
+                  </p>
+                );
+              })}
+            {result.missedIngredientCount > 1 && (
+              <p className="missingIngredientLabel">
+                You are missing {result.missedIngredientCount} ingredients
+              </p>
+            )}
+          {/* </div> */}
+        </div>
+        <div className="moreDetailsContainer">
+          <img className="resultBackImage" src={result.image}></img>
+          <ul className="extendedIngredientsList">
+            {fullResults.extendedIngredients.map((ingredient: any) => {
+              return (
+                <li className="extendedIngredientsItem">
+                  {ingredient.originalName}, {ingredient.measures.us.amount}{" "}
+                  {ingredient.measures.us.unitLong}{" "}
+                </li>
+              );
+            })}
+          </ul>
+          <p className="instructions"> {fullResults.instructions} </p>
+          <a
+            target="_blank"
+            className="recipeLink"
+            href={fullResults.sourceUrl}
+          >
+            {" "}
+            Original recipe at {fullResults.sourceName}{" "}
+          </a>
+          <p className="rating"> {fullResults.rating} </p>
+          {/* might be image instead */}
+          <p className="favorite"> {fullResults.favorite} </p>
+          {/* might be image instead */}
+        </div>
       </div>
-      <div className="moreDetailsContainer">
-        <img className='resultBackImage' src={result.image}></img>
-        <ul className='extendedIngredientsList'>
-          {/* Ingredients list not showing */}
-          {fullResults.extendedIngredients.map((ingredient: any) => {
-              return(
-                <li className='extendedIngredientsItem'>{ingredient.originalName}, {ingredient.measures.us.amount} {ingredient.measures.us.unitLong} </li>
-              )
-          })}
-        </ul>
-        <p className='instructions'> {fullResults.instructions} </p>
-        <a target='_blank' className='recipeLink' href={fullResults.sourceUrl}>
-        {" "}
-        Original recipe at {fullResults.sourceName}{" "}
-        </a>
-        <p className='rating'> {fullResults.rating} </p>
-        {/* might be image instead */}
-        <p className='favorite'> {fullResults.favorite} </p>
-        {/* might be image instead */}
-      </div>
-    </div>
-  );
-}
+    );
+  }
 
   const hasDishType = fullResults.dishTypes?.some((ingredient) => {
     console.log(ingredient);
@@ -194,20 +221,14 @@ function resultContent() {
   });
 
   function returnGridItem() {
-    if (hasAlcohol || hasDishType)  {
-      return (
-          resultContent()
-      )
+    if (hasAlcohol || hasDishType) {
+      return resultContent();
     } else {
       return null;
     }
   }
 
-    return (
-      <div className='grid'>
-        {returnGridItem()}
-      </div>
-    )
+  return <>{returnGridItem()}</>;
 }
 
 export default ResultItem;
