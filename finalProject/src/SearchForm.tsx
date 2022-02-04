@@ -3,6 +3,7 @@ import addIcon from './assets/addIcon.png'
 import searchIcon from './assets/searchIcon.png'
 import {useState, useEffect } from 'react'
 import removeIcon from './assets/removeIcon.png'
+import lineAccent from './assets/goldAccentLine.png'
 
 function SearchForm({setSearchTerm}:{setSearchTerm: Function}) {
   const [ingredients, setIngredients] = useState<Array<string>>([])
@@ -17,8 +18,12 @@ function SearchForm({setSearchTerm}:{setSearchTerm: Function}) {
   },[ingredients])
 
   function addIngredient() {
+    if (searchQuery === '') {
+      alert('Please Enter an Ingredient');
+    } else {
     setIngredients(ingredients.concat(searchQuery))
     clearSearchBox()
+    }
   }
 
   function activateSearch() {
@@ -40,9 +45,8 @@ function handleDeleteIngredient(index: number) {
 
   return (
     <div className='searchFormContainer'>
-      <div className='searchFormTitleContainer'>
         <h1 className='searchFormTitle'>Ingredients</h1>
-      </div>
+        <img className='searchLineAccent' src={lineAccent}></img>
       <div className="wrapper">
         <div className="searchInput">
             <input type="text" value={searchQuery} placeholder="Type to search..." 
@@ -67,7 +71,10 @@ function handleDeleteIngredient(index: number) {
             }
             </ul>
         </div>
-        <button id='removeAllButton' onClick={clearIngredients}>Remove All Ingredients</button>
+        <button id='removeAllButton' onClick={clearIngredients}>
+          <div id="underline"></div>
+          <p>Remove All</p>          
+        </button>
       </div>
     </div>
   );

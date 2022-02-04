@@ -2,16 +2,24 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: Schmalfette;
+    src: url(./assets/fonts/Schmalfette.ttf) format("truetype");
+}
+
 header {
-    font-family: 'Shrikhand', sans-serif;
+    /* font-family: 'Shrikhand', sans-serif; */
 }
 
 .headerContainer {
-    background-color: #3d5c6e;
+    /* background-color: #3d5c6e; */
+    /* background-color: rgb(61, 92, 110, 0.8); */
+    background-color: rgba(78, 83, 83, 0.6);
     display: flex;
     justify-content: space-between;
     height: 7rem;
-    color: #e2bb54;
+    /* color: #e2bb54; */
+    color: rgb(236, 213, 82);
     flex-direction: row;
 }
 
@@ -23,8 +31,19 @@ header {
     margin: 0 0 0 1rem;
 }
 
-.titles {
+.title {
     font-weight: normal;
+    font-family: Schmalfette;
+    font-size: 70px;
+    letter-spacing: 1.8px;
+}
+
+.titleDescription {
+    font-family: Simplifica;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 20px;
+    color: rgba(247, 255, 255, 0.9)
 }
 
 h1,
@@ -40,30 +59,36 @@ h2 {
     text-align: center;
     vertical-align: middle;
     line-height: 7rem;
+    font-family: Simplifica;
+    text-transform: uppercase;
 }
 
 a {
     text-decoration: none;
     font-weight: lighter;
+    font-size: 28px;
 }
 
 #home {
     /* background-color: #718f94; */
-    background-image: linear-gradient(to bottom right, #718f94, #629199);
+    /* background-image: linear-gradient(to bottom right, #718f94, #629199); */
+    background-color: rgba(41, 44, 44, 0.7);
     color: #e2bb54;
     flex-grow: 1;
 }
 
 #logIn {
     /* background-color: #8a3518; */
-    background-image: linear-gradient(to bottom right, #8a3518, #a83e1b);
+    /* background-image: linear-gradient(to bottom right, #8a3518, #a83e1b); */
+    background-color: rgba(32, 34, 34, 0.7);
     color: #e2bb54;
     flex-grow: 1;
 }
 
 #favorites {
-    background-color: #606b4d;
-    background-image: linear-gradient(to bottom right, #606b4d, #778560);
+    /* background-color: #606b4d; */
+    /* background-image: linear-gradient(to bottom right, #606b4d, #778560); */
+    background-color: rgba(14, 15, 15, 0.7);
     color: #e2bb54;
     flex-grow: 1;
 }

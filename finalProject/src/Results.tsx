@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Results.css";
+import lineAccent from './assets/goldAccentLine.png'
 
 interface Result {
   id: number;
@@ -46,7 +47,6 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
       )
       .then(function (response: any) {
         console.log("First Response ResultList");
-        console.log(response.data);
         // sorting logic here
 
         const cocktails = response.data as Result[];
@@ -66,6 +66,8 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
   return (
     <div className='gridContainer'>
       <h1 className='resultsHeader'>Cocktails</h1>
+      <img className='resultsLineAccent' src={lineAccent}></img>
+      
       {/* <h2>Results for {searchTerm}</h2> */}
       <div className="grid">
         {results.map((result, index) => {
@@ -119,7 +121,7 @@ export function ResultItem({ result }: { result: Result }) {
     resultTile!.classList.toggle("flip-tile");
   }
 
-  function resultContent() {
+  function ResultContent() {
     return (
       <div
         onClick={flipTile}
@@ -136,8 +138,7 @@ export function ResultItem({ result }: { result: Result }) {
               result.missedIngredients.map((missedIngredient: any) => {
                 return (
                   <p className="missingIngredientLabel">
-                    You are missing:
-                    {missedIngredient.originalName}
+                    You are missing: {missedIngredient.originalName}
                   </p>
                 );
               })}
@@ -149,6 +150,7 @@ export function ResultItem({ result }: { result: Result }) {
           {/* </div> */}
         </div>
         <div className="moreDetailsContainer">
+          <div className='moreDetailsContent'>
           <img className="resultBackImage" src={result.image}></img>
           <ul className="extendedIngredientsList">
             {fullResults.extendedIngredients.map((ingredient: any) => {
@@ -173,6 +175,7 @@ export function ResultItem({ result }: { result: Result }) {
           {/* might be image instead */}
           <p className="favorite"> {fullResults.favorite} </p>
           {/* might be image instead */}
+          </div>
         </div>
       </div>
     );
@@ -222,7 +225,7 @@ export function ResultItem({ result }: { result: Result }) {
 
   function returnGridItem() {
     if (hasAlcohol || hasDishType) {
-      return resultContent();
+      return ResultContent();
     } else {
       return null;
     }
