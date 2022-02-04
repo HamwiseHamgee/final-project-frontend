@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, ReactNode, useContext } from "react";
 import axios from "axios";
 import './Results.css'
+import { FavoriteContext } from "./FavoritesContext";
 
-interface Result {
+export interface Result {
   id: number;
   index: number;
   title: string;
@@ -44,7 +45,6 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
         options
       )
       .then(function (response: any) {
-        console.log(response.data);
         // sorting logic here
 
         const cocktails = response.data as Result[];
@@ -74,6 +74,7 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
 
 export function ResultItem({ result }: { result: Result }) {
   const [hidden, setHidden] = useState(false);
+  
 
   function toggleHidden() {
     setHidden(!hidden);
@@ -96,7 +97,6 @@ export function ResultItem({ result }: { result: Result }) {
         options
       )
       .then(function (response: any) {
-        console.log(response.data);
         // sorting logic here
 
         const cocktails = response.data as Result;
@@ -114,7 +114,10 @@ function flipTile() {
   resultTile!.classList.toggle('flip-tile')
 }
 
-function resultContent() {
+function ResultContent() {
+  const {favorites, addFavorite} = useContext(FavoriteContext);
+  
+
   return (
     <div onClick={flipTile} id={`resultTile${result.id}`} className="resultContainer">
       <div key={result.id} className='resultsContent'>
@@ -144,7 +147,8 @@ function resultContent() {
         </a>
         <p className='rating'> {fullResults.rating} </p>
         {/* might be image instead */}
-        <p className='favorite'> {fullResults.favorite} </p>
+        <button type="button" className="favoriteButton" onClick={() => addFavorite(result)}>Favorite</button>
+        {/* <p className='favorite'> {fullResults.favorite} </p> */}
         {/* might be image instead */}
       </div>
     </div>
@@ -152,7 +156,6 @@ function resultContent() {
 }
 
   const hasDishType = fullResults.dishTypes?.some((ingredient) => {
-    console.log(ingredient);
     const allowedDishTypes = [
       "Alcoholic Beverages",
       "Alcohol",
@@ -173,7 +176,6 @@ function resultContent() {
   });
 
   const hasAlcohol = fullResults.extendedIngredients?.some((ingredient) => {
-    console.log(ingredient);
     const allowedIngredients = [
       "Alcoholic Beverages",
       "Alcohol",
@@ -196,7 +198,7 @@ function resultContent() {
   function returnGridItem() {
     if (hasAlcohol || hasDishType)  {
       return (
-          resultContent()
+          ResultContent()
       )
     } else {
       return null;

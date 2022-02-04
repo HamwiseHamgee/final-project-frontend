@@ -1,4 +1,6 @@
 import "./Header.css";
+import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
+
 
 function Header() {
   return (
@@ -8,9 +10,9 @@ function Header() {
         <h2 className='titles'>A Cocktail App for the Poorly-Stocked Bar</h2>
       </div>
       <nav className="navContainer">
-        <a id='home' href="">Home</a>
+        <Link id='home' to="/">Home</Link>
         <a id='logIn' href="">Log in</a>
-        <a id='favorites' href="">Favorites</a>
+        <Link id='favorites' to="/Favorites">Favorites</Link>
       </nav>
     </header>
   );

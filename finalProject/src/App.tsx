@@ -1,30 +1,41 @@
-import React from 'react';
-import './App.css';
-import Header from './Header';
-import SearchForm from './SearchForm';
-import {ResultList} from './Results';
-import { useState } from 'react'
-import './Results.css'
-// import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import React from "react";
+import "./App.css";
+import Header from "./Header";
+import SearchForm from "./SearchForm";
+import { ResultList } from "./Results";
+import { useState } from "react";
+import "./Results.css";
+import Favorites from "./Favorites";
+import { FavoriteContext, FavoritesContextProvider } from "./FavoritesContext";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  Link,
+} from "react-router-dom";
+import Home from "./Home";
 
 function App() {
-  const [searchTerm, setSearchTerm]= useState('')
-
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
+    <Router>
+      <div className="App">
+        <Header />
 
-    <div className="App">
-      <Header/>
-        <div className='homeContainer'> 
-          
-            <SearchForm setSearchTerm={setSearchTerm}/>
-            <ResultList searchTerm={searchTerm}/>
+        <div className="homeContainer">
+          <FavoritesContextProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
 
+              <Route path="/favorites" element={<Favorites />} />
+            </Routes>
+          </FavoritesContextProvider>
         </div>
-        
-    </div>
+      </div>
+    </Router>
   );
 }
-
 
 export default App;

@@ -3,21 +3,6 @@ import * {
 }
 
 .homeContainer {
-<<<<<<< HEAD
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  /* background-color: lightblue; */
-  background-image: url("assets/background-tiles.jpeg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-.resultsListContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-=======
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -31,7 +16,6 @@ import * {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
->>>>>>> 7bceabd63693cd7ebb8df390a319ae7849f1f0db
 }
 
 html,
@@ -58,18 +42,6 @@ dl {
 }
 
 @media (min-width: 768px) {
-<<<<<<< HEAD
-  .homeContainer {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    /* background-color: lightgreen; */
-
-    /* justify-content: flex-start; */
-    align-items: flex-start;
-  }
-}
-=======
     .homeContainer {
         display: flex;
         flex-direction: row;
@@ -79,4 +51,3 @@ dl {
         align-items: flex-start;
     }
 }
->>>>>>> 7bceabd63693cd7ebb8df390a319ae7849f1f0db
