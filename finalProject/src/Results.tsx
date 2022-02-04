@@ -2,6 +2,8 @@ import { useState, useEffect, createContext, ReactNode, useContext } from "react
 import axios from "axios";
 import './Results.css'
 import { FavoriteContext } from "./FavoritesContext";
+import "./Results.css";
+import lineAccent from './assets/goldAccentLine.png'
 
 export interface Result {
   id: number;
@@ -9,6 +11,7 @@ export interface Result {
   title: string;
   image: string;
   missedIngredientCount: number;
+  missedIngredients: any[];
   extendedIngredients: any[];
   dishTypes: any[];
   servings: number;
@@ -45,6 +48,7 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
         options
       )
       .then(function (response: any) {
+        console.log("First Response ResultList");
         // sorting logic here
 
         const cocktails = response.data as Result[];
@@ -62,12 +66,17 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
       });
   }, [searchTerm]);
   return (
-    <div>
-      <h2>Results for {searchTerm}</h2>
-      {results.map((result, index) => {
-        result.index=index
-        return <ResultItem key={result.id} result={result} ></ResultItem>;
-      })}
+    <div className='gridContainer'>
+      <h1 className='resultsHeader'>Cocktails</h1>
+      <img className='resultsLineAccent' src={lineAccent}></img>
+      
+      {/* <h2>Results for {searchTerm}</h2> */}
+      <div className="grid">
+        {results.map((result, index) => {
+          result.index = index;
+          return <ResultItem key={result.id} result={result}></ResultItem>;
+        })}
+      </div>
     </div>
   );
 }
@@ -109,10 +118,10 @@ export function ResultItem({ result }: { result: Result }) {
       });
   }, [result]);
 
-function flipTile() {
-  let resultTile = document!.getElementById(`resultTile${result.id}`)
-  resultTile!.classList.toggle('flip-tile')
-}
+  function flipTile() {
+    let resultTile = document!.getElementById(`resultTile${result.id}`);
+    resultTile!.classList.toggle("flip-tile");
+  }
 
 function ResultContent() {
   const {favorites, addFavorite} = useContext(FavoriteContext);
@@ -152,8 +161,8 @@ function ResultContent() {
         {/* might be image instead */}
       </div>
     </div>
-  );
-}
+    );
+  }
 
   const hasDishType = fullResults.dishTypes?.some((ingredient) => {
     const allowedDishTypes = [
@@ -205,11 +214,7 @@ function ResultContent() {
     }
   }
 
-    return (
-      <div className='grid'>
-        {returnGridItem()}
-      </div>
-    )
+  return <>{returnGridItem()}</>;
 }
 
 export default ResultItem;

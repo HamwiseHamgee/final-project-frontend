@@ -2,7 +2,38 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Shrikhand', sans-serif;
+    /* font-family: 'Shrikhand', sans-serif; */
+}
+
+
+/* 
+.lineAccent {
+    width: 50%;
+    align-self: center;
+    padding: 0;
+    padding-bottom: 10px;
+    margin: 0;
+    filter: brightness(2);
+    filter: saturate(5);
+    filter: hue-rotate(-20deg);
+} */
+
+.searchFormTitle {
+    font-family: Simplifica;
+    text-transform: uppercase;
+    font-weight: 800;
+    align-self: center;
+}
+
+.searchLineAccent {
+    width: 50%;
+    align-self: center;
+    padding: 0;
+    padding-bottom: 10px;
+    margin: 0;
+    filter: brightness(2.5);
+    filter: saturate(4);
+    filter: hue-rotate(-13deg);
 }
 
 .searchFormContainer {
@@ -17,6 +48,9 @@
     padding: 0 20px;
     position: relative;
     min-width: 90vw;
+    font-family: Simplifica;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 ::selection {
@@ -31,7 +65,8 @@
 }
 
 .wrapper .searchInput {
-    background: #fff;
+    /* background: rgb(228, 219, 219); */
+    background-color: rgba(235, 235, 241, 0.8);
     width: 100%;
     border-radius: 5px;
     position: relative;
@@ -40,6 +75,14 @@
 
 .searchInput {
     display: flex;
+    letter-spacing: 1px;
+}
+
+::placeholder {
+    font-family: Simplifica;
+    letter-spacing: 1.5px;
+    font-size: 22px;
+    text-transform: uppercase;
 }
 
 .searchInput input {
@@ -51,10 +94,17 @@
     padding: 0 60px 0 20px;
     font-size: 18px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    font-family: Simplifica;
+    letter-spacing: 1px;
+    font-size: 20px;
 }
 
 .searchInput.active input {
     border-radius: 5px 5px 0 0;
+}
+
+.wrapper {
+    /* color: black; */
 }
 
 .searchInput img {
@@ -71,7 +121,7 @@
 
 .searchQueryContainer {
     display: flex;
-    background-color: gray;
+    background-color: rgba(10, 10, 19, 0.7);
     padding: 10px;
     max-width: 90%;
     flex-direction: column;
@@ -81,9 +131,10 @@
 .ingredientsContainer {
     display: flex;
     background-color: white;
+    color: rgb(4, 2, 14);
     flex-direction: column;
     height: 30vh;
-    border-radius: 20px;
+    border-radius: 4px;
 }
 
 .ingredientsContainer ul {
@@ -120,9 +171,45 @@
 }
 
 #removeAllButton {
-    border-radius: 10px;
+    /* border-radius: 4px; */
+    /* margin: 4px; */
     padding: 5px;
     cursor: pointer;
+    /* background: rgb(248, 248, 248); */
+    background: transparent;
+    font-family: Simplifica;
+    letter-spacing: 1.3px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+#removeAllButton {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#removeAllButton p {
+    color: white;
+    position: relative;
+    transition: all .45s ease-Out;
+}
+
+#underline {
+    width: 100%;
+    height: 3px;
+    margin-top: 15px;
+    align-self: flex-end;
+    left: -200px;
+    background: #BFC0C0;
+    position: absolute;
+    transition: all .3s ease-Out;
+    bottom: 0;
+}
+
+#removeAllButton:hover #underline {
+    left: 0;
 }
 
 
@@ -133,5 +220,9 @@
         min-width: 33vw;
         max-width: 33vw;
         height: 100%;
+    }
+    .searchFormTitle {
+        font-size: 60px;
+        letter-spacing: 6px;
     }
 }

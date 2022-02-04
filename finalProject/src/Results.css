@@ -1,68 +1,145 @@
+@font-face {
+    font-family: Simplifica;
+    src: url(./assets/fonts/Simplifica.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: Moderne-Sans;
+    src: url(./assets/fonts/Moderne-Sans.ttf) format("truetype");
+}
+
+@border-image {
+    z-index: -1;
+}
+
+.resultsLineAccent {
+    width: 50%;
+    align-self: center;
+    padding: 0;
+    padding-bottom: 10px;
+    margin: 0;
+    filter: brightness(2.5);
+    filter: saturate(4);
+    filter: hue-rotate(-13deg);
+}
+
+.resultsHeader {
+    padding-top: 8px;
+    font-family: Simplifica;
+    text-transform: uppercase;
+    font-weight: 800;
+    /* justify-self: center; */
+    align-self: center;
+    color: white;
+}
+
 .resultsContent {
     display: flex;
     /* justify-content: center; */
     align-items: center;
-    background-color: #718f94;
+    /* background-color: #718f94; */
     /* background-color: #8a3518; */
-    padding: 5px;
+    /* padding: 5px; */
     backface-visibility: hidden;
     text-align: center;
     position: relative;
     top: 0;
     left: 0;
-    border-radius: 10px;
-    width: 90vw;
+    /* border: 30px solid pink; */
+    /* border-radius: 10px; */
+    /* width: 90vw; */
     height: 100%;
+    color: white;
+}
+
+.gridContainer {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-self: start;
+    /* width: 95vw; */
+    color: black;
+}
+
+.resultContainer {
+    /* font-family: 'Corinthia', cursive; */
+    /* font-family: 'Josefin Sans', sans-serif; */
+    /* font-family: 'Petit Formal Script', cursive; */
 }
 
 .resultImage {
     position: relative;
     width: 100%;
     height: 100%;
+    /* border: 10px solid pink; */
+    /* border-image: url('./assets/vintageFrame.png') 30 / 19px round; */
 }
 
 .resultTitle {
     position: absolute;
     top: 5px;
-    width: 100%;
+    width: 95%;
     left: 5px;
     justify-content: center;
-}
-
-.extendedIngredientsList {
-    color: black;
+    /* border: 2px solid black; */
+    /* font-family: 'Josefin Sans', sans-serif; */
+    font-family: Simplifica;
+    /* background-color: rgba(255, 249, 249, 0.6); */
+    background-color: rgba(10, 10, 19, 0.7);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 36px;
 }
 
 .missingIngredientLabel {
     position: absolute;
     bottom: 5px;
-    width: 100%;
+    width: fit-content;
     left: 5px;
     justify-content: center;
+    /* border: 2px solid black; */
+    /* font-family: 'Josefin Sans', sans-serif; */
+    font-family: Simplifica;
+    background-color: rgba(255, 249, 249, 0.6);
+    /* text-transform: uppercase; */
+    font-weight: 600;
+    font-size: 30px;
+    background-color: rgba(10, 10, 19, 0.7);
 }
 
 .moreDetailsContainer {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 5px;
+    /* padding: 5px; */
     backface-visibility: hidden;
     /* background-color: #8a3518; */
-    background-color: #718f94;
+    /* background-color: #718f94; */
+    background-color: rgb(31, 31, 32);
     /* text-align: center; */
+    color: rgb(245, 244, 244);
+    text-transform: capitalize;
     transform: rotateY(180deg);
-    overflow-y: auto;
+    overflow: hidden;
     overflow-x: hidden;
-    width: 90vw;
+    /* width: 90vw; */
     height: 100%;
+    /*  */
+    /* border-image: url('./assets/vintageFrame.png') 30 / 19px round; */
 }
 
 .moreDetailsContainer img {
     transform: rotateY(180deg);
-    opacity: 0.15;
+    opacity: 0.5;
     position: absolute;
     width: 90vw;
     height: 100%;
+}
+
+.moreDetailsContainer a {
+    color: rgb(214, 147, 14);
+    font-weight: 500;
+    font-family: Simplifica;
 }
 
 .flip-tile {
@@ -72,12 +149,13 @@
 .grid {
     display: grid;
     grid-auto-flow: dense;
-    padding: 4px 4px;
+    /* padding: 4px 4px; */
     /* width: 66vw; */
     /* grid-template-columns: repeat(3, 1fr); */
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    /* grid-gap: 15px; */
+    grid-gap: 10px;
+    overflow-y: hidden scroll;
 }
 
 .gridItem {
@@ -89,11 +167,12 @@
     position: relative;
     transform-style: preserve-3d;
     transition: all 0.5s ease-out;
+    /* border: 18px solid gray; */
     /* max-height: 100%; */
 }
 
 .resultBackImage {
-    z-index: -1;
+    z-index: -2;
 }
 
 .recipeLink {
@@ -106,13 +185,24 @@
 }
 
 @media (min-width: 768px) {
+    .gridContainer {
+        height: 85vh;
+        width: 60vw;
+    }
+    .resultsHeader {
+        font-size: 60px;
+        letter-spacing: 6px;
+    }
+    .resultsLineAccent {
+        width: 30%;
+    }
     .resultsContent {
         display: flex;
         /* justify-content: center; */
         align-items: center;
-        background-color: #718f94;
+        /* background-color: #718f94; */
         /* background-color: #8a3518; */
-        padding: 5px;
+        /* padding: 5px; */
         backface-visibility: hidden;
         text-align: center;
         position: relative;
@@ -120,8 +210,12 @@
         left: 0;
         border-radius: 10px;
         height: 100%;
-        height: 231px;
-        width: 312px;
+        /* height: 346.5px; */
+        /* width: 468px; */
+        height: 288.75px;
+        width: 390px;
+        /* height: 231px; */
+        /* width: 312px; */
     }
     .resultImage {
         position: relative;
@@ -132,15 +226,32 @@
         width: 100%;
         left: 5px;
         justify-content: center;
+        max-width: 380px;
+        font-size: 24px;
+        letter-spacing: 1.25px;
     }
     .moreDetailsContainer {
-        padding: 5px;
-        height: 231px;
-        width: 312px;
+        /* padding: 5px; */
+        /* height: 346.5px; */
+        /* width: 468px; */
+        height: 288.75px;
+        width: 390px;
+        /* height: 231px; */
+        /* width: 312px; */
+    }
+    .missingIngredientLabel {
+        max-width: 380px;
+        font-size: 20px;
     }
     .moreDetailsContainer img {
-        height: 231px;
-        width: 312px;
+        /* Height is 0.74038% of Width */
+        /* Width is 1.35064% of Height */
+        /* height: 346.5px; */
+        /* width: 468px; */
+        height: 288.75px;
+        width: 390px;
+        /* height: 231px; */
+        /* width: 312px; */
     }
     .grid {
         grid-template-columns: repeat(3, 1fr);
