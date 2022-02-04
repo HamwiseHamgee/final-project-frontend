@@ -131,14 +131,21 @@ function ResultContent() {
     <div onClick={flipTile} id={`resultTile${result.id}`} className="resultContainer">
       <div key={result.id} className='resultsContent'>
         <img className='resultImage' src={result.image}></img>
-          <p className="resultTitle">{result.title} {result.index}</p>
-          {result.missedIngredientCount === 1 && (
-            <p className='missingIngredientLabel'>You are missing 1 ingredient</p>
-          )}
-          {result.missedIngredientCount > 1 && (
-          <p className='missingIngredientLabel'>You are missing {result.missedIngredientCount} ingredients</p>
-          )}
-      </div>
+          <p className="resultTitle">{result.title}</p>
+          {result.missedIngredientCount === 1 &&
+              result.missedIngredients.map((missedIngredient: any) => {
+                return (
+                  <p className="missingIngredientLabel">
+                    You are missing: {missedIngredient.originalName}
+                  </p>
+                );
+              })}
+            {result.missedIngredientCount > 1 && (
+              <p className="missingIngredientLabel">
+                You are missing {result.missedIngredientCount} ingredients
+              </p>
+            )}
+        </div>
       <div className="moreDetailsContainer">
         <img className='resultBackImage' src={result.image}></img>
         <ul className='extendedIngredientsList'>
