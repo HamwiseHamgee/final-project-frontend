@@ -1,9 +1,15 @@
-import { useState, useEffect, createContext, ReactNode, useContext } from "react";
+import {
+  useState,
+  useEffect,
+  createContext,
+  ReactNode,
+  useContext,
+} from "react";
 import axios from "axios";
-import './Results.css'
+import "./Results.css";
 import { FavoriteContext } from "./FavoritesContext";
 import "./Results.css";
-import lineAccent from './assets/goldAccentLine.png'
+import lineAccent from "./assets/goldAccentLine.png";
 
 export interface Result {
   id: number;
@@ -66,10 +72,10 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
       });
   }, [searchTerm]);
   return (
-    <div className='gridContainer'>
-      <h1 className='resultsHeader'>Cocktails</h1>
-      <img className='resultsLineAccent' src={lineAccent}></img>
-      
+    <div className="gridContainer">
+      <h1 className="resultsHeader">Cocktails</h1>
+      <img className="resultsLineAccent" src={lineAccent}></img>
+
       {/* <h2>Results for {searchTerm}</h2> */}
       <div className="grid">
         {results.map((result, index) => {
@@ -83,7 +89,6 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
 
 export function ResultItem({ result }: { result: Result }) {
   const [hidden, setHidden] = useState(false);
-  
 
   function toggleHidden() {
     setHidden(!hidden);
@@ -123,51 +128,67 @@ export function ResultItem({ result }: { result: Result }) {
     resultTile!.classList.toggle("flip-tile");
   }
 
-function ResultContent() {
-  const {favorites, addFavorite} = useContext(FavoriteContext);
-  
+  function ResultContent() {
+    const { favorites, addFavorite } = useContext(FavoriteContext);
 
-  return (
-    <div onClick={flipTile} id={`resultTile${result.id}`} className="resultContainer">
-      <div key={result.id} className='resultsContent'>
-        <img className='resultImage' src={result.image}></img>
+    return (
+      <div
+        onClick={flipTile}
+        id={`resultTile${result.id}`}
+        className="resultContainer"
+      >
+        <div key={result.id} className="resultsContent">
+          <img className="resultImage" src={result.image}></img>
           <p className="resultTitle">{result.title}</p>
           {result.missedIngredientCount === 1 &&
-              result.missedIngredients.map((missedIngredient: any) => {
-                return (
-                  <p className="missingIngredientLabel">
-                    You are missing: {missedIngredient.originalName}
-                  </p>
-                );
-              })}
-            {result.missedIngredientCount > 1 && (
-              <p className="missingIngredientLabel">
-                You are missing {result.missedIngredientCount} ingredients
-              </p>
-            )}
+            result.missedIngredients.map((missedIngredient: any) => {
+              return (
+                <p className="missingIngredientLabel">
+                  You are missing: {missedIngredient.originalName}
+                </p>
+              );
+            })}
+          {result.missedIngredientCount > 1 && (
+            <p className="missingIngredientLabel">
+              You are missing {result.missedIngredientCount} ingredients
+            </p>
+          )}
         </div>
-      <div className="moreDetailsContainer">
-        <img className='resultBackImage' src={result.image}></img>
-        <ul className='extendedIngredientsList'>
-          {/* Ingredients list not showing */}
-          {fullResults.extendedIngredients.map((ingredient: any) => {
-              return(
-                <li className='extendedIngredientsItem'>{ingredient.originalName}, {ingredient.measures.us.amount} {ingredient.measures.us.unitLong} </li>
-              )
-          })}
-        </ul>
-        <p className='instructions'> {fullResults.instructions} </p>
-        <a target='_blank' className='recipeLink' href={fullResults.sourceUrl}>
-        {" "}
-        Original recipe at {fullResults.sourceName}{" "}
-        </a>
-        <p className='rating'> {fullResults.rating} </p>
-        {/* might be image instead */}
-        <button type="button" className="favoriteButton" onClick={() => addFavorite(result)}>Favorite</button>
-        {/* <p className='favorite'> {fullResults.favorite} </p> */}
-        {/* might be image instead */}
+        <div className="moreDetailsContainer">
+          <img className="resultBackImage" src={result.image}></img>
+          <ul className="extendedIngredientsList">
+            {/* Ingredients list not showing */}
+            {fullResults.extendedIngredients.map((ingredient: any) => {
+              return (
+                <li className="extendedIngredientsItem">
+                  {ingredient.originalName}, {ingredient.measures.us.amount}{" "}
+                  {ingredient.measures.us.unitLong}{" "}
+                </li>
+              );
+            })}
+          </ul>
+          <p className="instructions"> {fullResults.instructions} </p>
+          <a
+            target="_blank"
+            className="recipeLink"
+            href={fullResults.sourceUrl}
+          >
+            {" "}
+            Original recipe at {fullResults.sourceName}{" "}
+          </a>
+          <p className="rating"> {fullResults.rating} </p>
+          {/* might be image instead */}
+          <button
+            type="button"
+            className="favoriteButton"
+            onClick={() => addFavorite(result)}
+          >
+            Favorite
+          </button>
+          {/* <p className='favorite'> {fullResults.favorite} </p> */}
+          {/* might be image instead */}
+        </div>
       </div>
-    </div>
     );
   }
 
@@ -212,10 +233,8 @@ function ResultContent() {
   });
 
   function returnGridItem() {
-    if (hasAlcohol || hasDishType)  {
-      return (
-          ResultContent()
-      )
+    if (hasAlcohol || hasDishType) {
+      return ResultContent();
     } else {
       return null;
     }
