@@ -24,7 +24,7 @@ function Header() {
       </div>
       <nav className="navContainer">
         <Link id='home' to="/">Home</Link>
-        <a id='logIn' href="">Log in</a>
+        <Link id='login' to='/login'>Log in</Link>
         <Link id='favorites' to="/Favorites">Favorites</Link>
       </nav>
     </header>

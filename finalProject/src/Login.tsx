@@ -8,10 +8,10 @@ import Header from './Header'
 import { useState } from 'react'
 
 
-interface Props {
-    showLogin: boolean;
-    onClose: () => void;
-}
+// interface Props {
+//     showLogin: boolean;
+//     onClose: () => void;
+// }
 
 function Login(
     // {showLogin, onClose}: Props
