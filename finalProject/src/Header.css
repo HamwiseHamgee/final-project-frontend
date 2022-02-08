@@ -17,7 +17,8 @@ header {
     background-color: rgba(78, 83, 83, 0.6);
     display: flex;
     justify-content: space-between;
-    height: 7rem;
+    /* height: 7rem; */
+    height: 12vh;
     /* color: #e2bb54; */
     color: rgb(236, 213, 82);
     flex-direction: row;

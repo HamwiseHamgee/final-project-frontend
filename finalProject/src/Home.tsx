@@ -9,7 +9,7 @@ function Home() {
     const [searchTerm, setSearchTerm] = useState("");
     return(
         <>
-        <SearchForm setSearchTerm={setSearchTerm} />
+            <SearchForm setSearchTerm={setSearchTerm} />
             <ResultList searchTerm={searchTerm} />
         </>
     )
