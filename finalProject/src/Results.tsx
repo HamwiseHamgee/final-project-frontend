@@ -42,9 +42,12 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
         ranking: "2",
       },
       headers: {
+        // "x-rapidapi-host":
+        //   "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        // "x-rapidapi-key": "bac5b9dc17msh2d4a352662dd6a7p190c49jsn86be79361b22",
         "x-rapidapi-host":
           "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        "x-rapidapi-key": "bac5b9dc17msh2d4a352662dd6a7p190c49jsn86be79361b22",
+        "x-rapidapi-key": "3a1e317334mshf91b4c298e5221ep1ff786jsn4a007427aeeb",
       },
     };
 
@@ -99,9 +102,12 @@ export function ResultItem({ result }: { result: Result }) {
   useEffect(() => {
     const options = {
       headers: {
+        // "x-rapidapi-host":
+        //   "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        // "x-rapidapi-key": "bac5b9dc17msh2d4a352662dd6a7p190c49jsn86be79361b22",
         "x-rapidapi-host":
           "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        "x-rapidapi-key": "bac5b9dc17msh2d4a352662dd6a7p190c49jsn86be79361b22",
+        "x-rapidapi-key": "3a1e317334mshf91b4c298e5221ep1ff786jsn4a007427aeeb",
       },
     };
 
@@ -188,9 +194,77 @@ export function ResultItem({ result }: { result: Result }) {
           {/* <p className='favorite'> {fullResults.favorite} </p> */}
           {/* might be image instead */}
         </div>
+        <div className="moreDetailsContainer">
+          <img className="resultBackImage" src={result.image}></img>
+          <ul className="extendedIngredientsList">
+            {/* Ingredients list not showing */}
+            {fullResults.extendedIngredients.map((ingredient: any) => {
+              return (
+                <li className="extendedIngredientsItem">
+                  {ingredient.originalName}, {ingredient.measures.us.amount}{" "}
+                  {ingredient.measures.us.unitLong}{" "}
+                </li>
+              );
+            })}
+          </ul>
+          <p className="instructions"> {fullResults.instructions} </p>
+          <a
+            target="_blank"
+            className="recipeLink"
+            href={fullResults.sourceUrl}
+          >
+            {" "}
+            Original recipe at {fullResults.sourceName}{" "}
+          </a>
+          <p className="rating"> {fullResults.rating} </p>
+          {/* might be image instead */}
+          {/* set favorite = true w/ addFavorite
+        show unfavorite button if favorite = true and vice versa*/}
+          <button
+            className="favoriteButton"
+            id="favoriteButton"
+            onClick={() => addFavorite(result)}
+          >
+            <div id="underline"></div>
+            <p>Favorite</p>
+          </button>
+        </div>
       </div>
     );
   }
+
+  // function FavoriteContent() {
+  //   const {favorites, addFavorite} = useContext(FavoriteContext);
+
+  //   return (
+  //     <div onClick={flipTile} id={`resultTile${result.id}`} className="resultContainer">
+  //       <div key={result.id} className='resultsContent'>
+  //         <img className='resultImage' src={result.image}></img>
+  //           <p className="resultTitle">{result.title}</p>
+  //         </div>
+  //       <div className="moreDetailsContainer">
+  //         <img className='resultBackImage' src={result.image}></img>
+  //         <ul className='extendedIngredientsList'>
+  //           {fullResults.extendedIngredients.map((ingredient: any) => {
+  //               return(
+  //                 <li className='extendedIngredientsItem'>{ingredient.originalName}, {ingredient.measures.us.amount} {ingredient.measures.us.unitLong} </li>
+  //               )
+  //           })}
+  //         </ul>
+  //         <p className='instructions'> {fullResults.instructions} </p>
+  //         <a target='_blank' className='recipeLink' href={fullResults.sourceUrl}>
+  //         {" "}
+  //         Original recipe at {fullResults.sourceName}{" "}
+  //         </a>
+  //         <p className='rating'> {fullResults.rating} </p>
+  //         <button className='favoriteButton' id='favoriteButton' onClick={() => addFavorite(result)}>
+  //           <div id="underline"></div>
+  //           <p>Favorite</p>
+  //         </button>
+  //       </div>
+  //     </div>
+  //     );
+  //   }
 
   const hasDishType = fullResults.dishTypes?.some((ingredient) => {
     const allowedDishTypes = [

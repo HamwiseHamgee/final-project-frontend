@@ -26,11 +26,14 @@ function App() {
 
         <div className="homeContainer">
           <FavoritesContextProvider>
-            <Routes>
-              <Route path="/" element={<Home />} />
 
+            <Routes>
+
+              <Route path="/" element={<Home />} />
               <Route path="/favorites" element={<Favorites />} />
+
             </Routes>
+            
           </FavoritesContextProvider>
         </div>
       </div>
