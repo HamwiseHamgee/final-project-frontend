@@ -135,7 +135,7 @@ export function ResultItem({ result }: { result: Result }) {
   }
 
   function ResultContent() {
-    const { favorites, addFavorite } = useContext(FavoriteContext);
+    const { addFavorite, removeFavorite } = useContext(FavoriteContext);
 
     return (
       <div
@@ -160,40 +160,7 @@ export function ResultItem({ result }: { result: Result }) {
             </p>
           )}
         </div>
-        <div className="moreDetailsContainer">
-          <img className="resultBackImage" src={result.image}></img>
-          <ul className="extendedIngredientsList">
-            {/* Ingredients list not showing */}
-            {fullResults.extendedIngredients.map((ingredient: any) => {
-              return (
-                <li className="extendedIngredientsItem">
-                  {ingredient.originalName}, {ingredient.measures.us.amount}{" "}
-                  {ingredient.measures.us.unitLong}{" "}
-                </li>
-              );
-            })}
-          </ul>
-          <p className="instructions"> {fullResults.instructions} </p>
-          <a
-            target="_blank"
-            className="recipeLink"
-            href={fullResults.sourceUrl}
-          >
-            {" "}
-            Original recipe at {fullResults.sourceName}{" "}
-          </a>
-          <p className="rating"> {fullResults.rating} </p>
-          {/* might be image instead */}
-          <button
-            type="button"
-            className="favoriteButton"
-            onClick={() => addFavorite(result)}
-          >
-            Favorite
-          </button>
-          {/* <p className='favorite'> {fullResults.favorite} </p> */}
-          {/* might be image instead */}
-        </div>
+        
         <div className="moreDetailsContainer">
           <img className="resultBackImage" src={result.image}></img>
           <ul className="extendedIngredientsList">
@@ -227,6 +194,15 @@ export function ResultItem({ result }: { result: Result }) {
           >
             <div id="underline"></div>
             <p>Favorite</p>
+          </button>
+
+          <button
+            className="favoriteButton"
+            id="deleteFavoriteButton"
+            onClick={() => removeFavorite(result)}
+          >
+            <div id="underline"></div>
+            <p>Delete Favorite</p>
           </button>
         </div>
       </div>
