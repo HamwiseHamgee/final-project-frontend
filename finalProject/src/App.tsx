@@ -15,6 +15,7 @@ import {
   Link,
 } from "react-router-dom";
 import Home from "./Home";
+import Login from './Login'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,10 +31,11 @@ function App() {
             <Routes>
 
               <Route path="/" element={<Home />} />
+              <Route path='login' element={<Login />} />
               <Route path="/favorites" element={<Favorites />} />
 
             </Routes>
-            
+
           </FavoritesContextProvider>
         </div>
       </div>
