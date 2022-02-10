@@ -8,6 +8,21 @@
     src: url(./assets/fonts/Moderne-Sans.ttf) format("truetype");
 }
 
+@font-face {
+    font-family: Voga;
+    src: url(./assets/fonts/Voga-Bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: League-Spartan;
+    src: url(./assets/fonts/league-spartan.bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: Lora;
+    src: url(./assets/fonts/Lora-Italic.ttf) format("truetype");
+}
+
 @border-image {
     z-index: -1;
 }
@@ -25,7 +40,7 @@
 
 .resultsHeader {
     padding-top: 8px;
-    font-family: Simplifica;
+    font-family: Voga;
     text-transform: uppercase;
     font-weight: 800;
     /* justify-self: center; */

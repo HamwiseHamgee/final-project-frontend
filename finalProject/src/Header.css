@@ -7,6 +7,16 @@
     src: url(./assets/fonts/Schmalfette.ttf) format("truetype");
 }
 
+@font-face {
+    font-family: Voga;
+    src: url(./assets/fonts/Voga-Bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: League-Spartan;
+    src: url(./assets/fonts/league-spartan.bold.ttf) format("truetype");
+}
+
 header {
     /* font-family: 'Shrikhand', sans-serif; */
 }
@@ -34,13 +44,13 @@ header {
 
 .title {
     font-weight: normal;
-    font-family: Schmalfette;
+    font-family: Voga;
     font-size: 70px;
     letter-spacing: 1.8px;
 }
 
 .titleDescription {
-    font-family: Simplifica;
+    font-family: League-Spartan;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 20px;

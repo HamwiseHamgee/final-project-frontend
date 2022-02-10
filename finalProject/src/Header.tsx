@@ -19,7 +19,7 @@ function Header() {
   return (
     <header className="headerContainer">
       <div className="titleContainer">
-        <h1 className='title'>Bottom of the Barrel</h1>
+        <h1 className='title'>BOTTOM OF THE BARREL</h1>
         <h2 className='titleDescription'>A Cocktail App for the Poorly-Stocked Bar</h2>
       </div>
       <nav className="navContainer">
