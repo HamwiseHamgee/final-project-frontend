@@ -5,6 +5,21 @@
     /* font-family: 'Shrikhand', sans-serif; */
 }
 
+@font-face {
+    font-family: Voga;
+    src: url(./assets/fonts/Voga-Bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: League-Spartan;
+    src: url(./assets/fonts/league-spartan.bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: Lora;
+    src: url(./assets/fonts/Lora-Italic.ttf) format("truetype");
+}
+
 
 /* 
 .lineAccent {
@@ -19,7 +34,7 @@
 } */
 
 .searchFormTitle {
-    font-family: Simplifica;
+    font-family: Voga;
     text-transform: uppercase;
     font-weight: 800;
     align-self: center;
@@ -45,12 +60,12 @@
     width: 50%;
     flex-direction: column;
     justify-content: center;
-    padding: 0 20px;
+    padding: 8px 20px;
     position: relative;
     min-width: 90vw;
     font-family: Simplifica;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    /* text-transform: uppercase; */
+    /* letter-spacing: 2px; */
 }
 
 ::selection {
@@ -79,10 +94,11 @@
 }
 
 ::placeholder {
-    font-family: Simplifica;
-    letter-spacing: 1.5px;
+    /* font-family: Simplifica; */
+    /* font-family: Lora; */
+    letter-spacing: .5px;
     font-size: 22px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 .searchInput input {
@@ -94,7 +110,8 @@
     padding: 0 60px 0 20px;
     font-size: 18px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
-    font-family: Simplifica;
+    /* font-family: Simplifica; */
+    font-family: Lora;
     letter-spacing: 1px;
     font-size: 20px;
 }
@@ -168,6 +185,12 @@
 
 .ingredientsContainerTitle {
     padding-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.ingredientItem {
+    font-family: Lora;
 }
 
 #removeAllButton {

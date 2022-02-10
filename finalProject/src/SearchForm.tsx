@@ -63,7 +63,7 @@ function handleDeleteIngredient(index: number) {
             <ul className='ingredientsList'> 
               {
                 ingredients.map((ingredient, i) => 
-                <li key={i}> 
+                <li key={i} className='ingredientItem'> 
                 {ingredient} 
                 <img  key={i} src={removeIcon} alt='remove button' 
                 onClick={() => {handleDeleteIngredient(i)}}></img>

@@ -42,7 +42,7 @@
     padding-top: 8px;
     font-family: Voga;
     text-transform: uppercase;
-    font-weight: 800;
+    /* font-weight: 800; */
     /* justify-self: center; */
     align-self: center;
     color: white;
@@ -132,10 +132,11 @@
     /* background-color: #718f94; */
     background-color: rgb(31, 31, 32);
     /* text-align: center; */
+    font-family: Lora;
     color: rgb(245, 244, 244);
     text-transform: capitalize;
     transform: rotateY(180deg);
-    overflow: hidden;
+    /* overflow: hidden; */
     overflow-x: hidden;
     /* width: 90vw; */
     height: 100%;
@@ -153,8 +154,17 @@
 
 .moreDetailsContainer a {
     color: rgb(214, 147, 14);
-    font-weight: 500;
-    font-family: Simplifica;
+    font-size: 18px;
+    /* font-weight: 500; */
+    /* font-family: Simplifica; */
+}
+
+.extendedIngredientsList {
+    list-style: circle;
+}
+
+.extendedIngredientsItem {
+    list-style: circle;
 }
 
 .flip-tile {
@@ -194,12 +204,17 @@
     z-index: 3;
 }
 
+.recipeLink a {
+    font-family: Lora;
+}
+
 .favoriteButton {
     z-index: 3;
     width: 100%;
 }
 
-#favoriteButton {
+#favoriteButton,
+#deleteFavoriteButton {
     /* border-radius: 4px; */
     /* margin: 4px; */
     padding: 5px;
@@ -216,13 +231,15 @@
     /* width: 150px; */
 }
 
-#favoriteButton {
+#favoriteButton,
+#deleteFavoriteButton {
     position: relative;
     overflow: hidden;
     cursor: pointer;
 }
 
-#favoriteButton p {
+#favoriteButton,
+#deleteFavoriteButton p {
     color: white;
     position: relative;
     transition: all .45s ease-Out;
@@ -251,7 +268,94 @@
         overflow: scroll;
     }
     .grid {
-        height: 500px;
+        /* height: 500px; */
+    }
+    .resultContainer {
+        /* height: 288.75px; */
+        /* width: 390px; */
+        height: 231px;
+        width: 312px;
+    }
+    .resultsHeader {
+        font-size: 40px;
+        letter-spacing: 6px;
+    }
+    .resultsLineAccent {
+        width: 50%;
+    }
+    .resultsContent {
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        /* background-color: #718f94; */
+        /* background-color: #8a3518; */
+        /* padding: 5px; */
+        backface-visibility: hidden;
+        text-align: center;
+        position: relative;
+        top: 0;
+        left: 0;
+        border-radius: 10px;
+        height: 100%;
+        width: 100%;
+        /* height: 346.5px; */
+        /* width: 468px; */
+        /* height: 288.75px; */
+        /* width: 390px; */
+        /* height: 231px; */
+        /* width: 312px; */
+    }
+    .resultImage {
+        position: relative;
+    }
+    .resultTitle {
+        position: absolute;
+        top: 5px;
+        width: 100%;
+        left: 5px;
+        justify-content: center;
+        max-width: 380px;
+        font-size: 24px;
+        letter-spacing: 1.25px;
+    }
+    .moreDetailsContainer {
+        /* padding: 5px; */
+        /* height: 346.5px; */
+        /* width: 468px; */
+        /* height: 288.75px; */
+        /* width: 390px; */
+        height: 231px;
+        width: 312px;
+    }
+    .missingIngredientLabel {
+        max-width: 380px;
+        font-size: 20px;
+    }
+    .moreDetailsContainer img {
+        /* Height is 0.74038% of Width */
+        /* Width is 1.35064% of Height */
+        /* height: 346.5px; */
+        /* width: 468px; */
+        /* height: 288.75px; */
+        /* width: 390px; */
+        height: 231px;
+        width: 312px;
+    }
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-gap: 15px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .gridContainer {
+        height: 88vh;
+        width: 70vw;
+        overflow: scroll;
+    }
+    .grid {
+        /* height: 500px; */
     }
     .resultContainer {
         height: 288.75px;
@@ -324,6 +428,6 @@
     .grid {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(1, 1fr);
-        grid-gap: 15px;
+        grid-gap: 10px;
     }
 }

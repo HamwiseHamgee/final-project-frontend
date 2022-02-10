@@ -163,6 +163,7 @@ export function ResultItem({ result }: { result: Result }) {
         
         <div className="moreDetailsContainer">
           <img className="resultBackImage" src={result.image}></img>
+          <h2 className='listTitle'>Ingredients:</h2>
           <ul className="extendedIngredientsList">
             {/* Ingredients list not showing */}
             {fullResults.extendedIngredients.map((ingredient: any) => {
@@ -174,7 +175,10 @@ export function ResultItem({ result }: { result: Result }) {
               );
             })}
           </ul>
+          <br></br>
+          <h2 className='instructionsTitle'>Instructions:</h2>
           <p className="instructions"> {fullResults.instructions} </p>
+          <br></br>
           <a
             target="_blank"
             className="recipeLink"
@@ -187,6 +191,7 @@ export function ResultItem({ result }: { result: Result }) {
           {/* might be image instead */}
           {/* set favorite = true w/ addFavorite
         show unfavorite button if favorite = true and vice versa*/}
+        <br></br>
           <button
             className="favoriteButton"
             id="favoriteButton"
