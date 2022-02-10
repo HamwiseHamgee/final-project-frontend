@@ -58,7 +58,7 @@ function handleDeleteIngredient(index: number) {
       </div>
 
       <div className='searchQueryContainer'>
-        <p className='ingredientsContainerTitle'>Your included ingredients</p>
+        <p className='ingredientsContainerTitle'>Your ingredients</p>
         <div className='ingredientsContainer'>
             <ul className='ingredientsList'> 
               {

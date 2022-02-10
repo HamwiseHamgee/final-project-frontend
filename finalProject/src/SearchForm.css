@@ -41,7 +41,7 @@
 }
 
 .searchLineAccent {
-    width: 50%;
+    width: 150px;
     align-self: center;
     padding: 0;
     padding-bottom: 10px;
@@ -59,8 +59,9 @@
     display: flex;
     width: 50%;
     flex-direction: column;
-    justify-content: center;
-    padding: 8px 20px;
+    /* justify-content: center; */
+    align-items: center;
+    
     position: relative;
     min-width: 90vw;
     font-family: Simplifica;
@@ -82,7 +83,7 @@
 .wrapper .searchInput {
     /* background: rgb(228, 219, 219); */
     background-color: rgba(235, 235, 241, 0.8);
-    width: 100%;
+    width: 300px;
     border-radius: 5px;
     position: relative;
     box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
@@ -140,6 +141,7 @@
     display: flex;
     background-color: rgba(10, 10, 19, 0.7);
     padding: 10px;
+    width: 300px;
     max-width: 90%;
     flex-direction: column;
     border-radius: 10px;
@@ -238,14 +240,31 @@
 
 /* Desktop */
 
+/* @media (min-width: 1024px) {
+    .searchLineAccent {
+        width: 250px;
+    }
+} */
+
 @media (min-width: 768px) {
     .searchFormContainer {
         min-width: 33vw;
         max-width: 33vw;
         height: 100%;
+        padding: 8px 20px;
     }
     .searchFormTitle {
         font-size: 60px;
         letter-spacing: 6px;
     }
+    .searchQueryContainer {
+        width: 100%;
+    }
+    .searchInput {
+        width: 100%;
+    }
+    .searchLineAccent {
+        width: 275px;
+    }
 }
+

@@ -28,7 +28,8 @@ header {
     display: flex;
     justify-content: space-between;
     /* height: 7rem; */
-    height: 12vh;
+    /* height: 12vh; */
+    height: 50px;
     /* color: #e2bb54; */
     color: rgb(236, 213, 82);
     flex-direction: row;

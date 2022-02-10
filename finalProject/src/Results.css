@@ -28,7 +28,7 @@
 }
 
 .resultsLineAccent {
-    width: 50%;
+    width: 150px;
     align-self: center;
     padding: 0;
     padding-bottom: 10px;
@@ -281,7 +281,7 @@
         letter-spacing: 6px;
     }
     .resultsLineAccent {
-        width: 50%;
+        width: 275px;
     }
     .resultsContent {
         display: flex;
@@ -367,9 +367,9 @@
         font-size: 60px;
         letter-spacing: 6px;
     }
-    .resultsLineAccent {
-        width: 30%;
-    }
+    /* .resultsLineAccent {
+        width: 200px;
+    } */
     .resultsContent {
         display: flex;
         /* justify-content: center; */
