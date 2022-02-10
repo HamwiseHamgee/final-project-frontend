@@ -11,7 +11,7 @@ function Favorites() {
   return (
     <div className="favoritesContainer">
       <h2 className='favoritesHeader'>FAVORITES</h2>
-      <img src={lineAccent} className='favoritesLineAccent'></img>
+      <img src={lineAccent} className='lineAccent'></img>
       <div className="favoritesGrid">
           {favorites.map((favorites) => {
             return (
