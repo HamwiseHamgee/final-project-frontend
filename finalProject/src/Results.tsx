@@ -92,6 +92,8 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
 
 export function ResultItem({ result }: { result: Result }) {
   const [hidden, setHidden] = useState(false);
+  const {favorites} = useContext(FavoriteContext)
+  const [favorited, setFavorited] = useState(false);
 
   function toggleHidden() {
     setHidden(!hidden);
@@ -129,9 +131,17 @@ export function ResultItem({ result }: { result: Result }) {
       });
   }, [result]);
 
-  function flipTile() {
+  function FlipTile() {
     let resultTile = document!.getElementById(`resultTile${result.id}`);
     resultTile!.classList.toggle("flip-tile");
+
+    // const {favorites} = useContext(FavoriteContext)
+
+    if (favorites.length && (favorites?.some((favorited) => favorited.id===result.id)=== true)) {
+      setFavorited(true)
+    } else {
+     setFavorited(false)
+    }
   }
 
   function ResultContent() {
@@ -139,14 +149,14 @@ export function ResultItem({ result }: { result: Result }) {
 
     return (
       <div
-        onClick={flipTile}
+        onClick={FlipTile}
         id={`resultTile${result.id}`}
         className="resultContainer"
       >
         <div key={result.id} className="resultsContent">
           <img className="resultImage" src={result.image}></img>
           <p className="resultTitle">{result.title}</p>
-          {result.missedIngredientCount === 1 &&
+          {(favorited==false && result.missedIngredientCount === 1) &&
             result.missedIngredients.map((missedIngredient: any) => {
               return (
                 <p className="missingIngredientLabel">
@@ -154,7 +164,7 @@ export function ResultItem({ result }: { result: Result }) {
                 </p>
               );
             })}
-          {result.missedIngredientCount > 1 && (
+          {(favorited==false && result.missedIngredientCount > 1) && (
             <p className="missingIngredientLabel">
               You are missing {result.missedIngredientCount} ingredients
             </p>
@@ -192,6 +202,7 @@ export function ResultItem({ result }: { result: Result }) {
           {/* set favorite = true w/ addFavorite
         show unfavorite button if favorite = true and vice versa*/}
         <br></br>
+        {favorited==false ? 
           <button
             className="favoriteButton"
             id="favoriteButton"
@@ -199,7 +210,7 @@ export function ResultItem({ result }: { result: Result }) {
           >
             <div id="underline"></div>
             <p>Favorite</p>
-          </button>
+          </button> :
 
           <button
             className="favoriteButton"
@@ -209,6 +220,7 @@ export function ResultItem({ result }: { result: Result }) {
             <div id="underline"></div>
             <p>Delete Favorite</p>
           </button>
+  }
         </div>
       </div>
     );

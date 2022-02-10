@@ -28,7 +28,8 @@ header {
     display: flex;
     justify-content: space-between;
     /* height: 7rem; */
-    height: 12vh;
+    /* height: 12vh; */
+    height: 50px;
     /* color: #e2bb54; */
     color: rgb(236, 213, 82);
     flex-direction: row;
@@ -45,16 +46,16 @@ header {
 .title {
     font-weight: normal;
     font-family: Voga;
-    font-size: 30px;
-    letter-spacing: 1.8px;
+    font-size: 22px;
+    letter-spacing: 1.2px;
 }
 
 .titleDescription {
     font-family: Simplifica;
     /* font-family: Lora; */
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 14px;
+    letter-spacing: 1px;
+    font-size: 12px;
     color: rgba(247, 255, 255, 0.9)
 }
 
@@ -76,7 +77,7 @@ h2 {
     /* line-height: 7rem; */
     font-family: Simplifica;
     text-transform: uppercase;
-    /* font-size: 12px; */
+    font-size: 18px;
     width: 180px;
 }
 
@@ -112,6 +113,7 @@ a {
     /* width: 200px; */
     width: 60px;
     height: 100%;
+    cursor: pointer;
 }
 
 #favorites {
@@ -135,6 +137,7 @@ a {
     .navContainer {
         width: 300px;
         height: 100%;
+        font-size: 22px;
     }
     #home {
         width: 100px;
@@ -171,19 +174,20 @@ a {
         height: 110px;
     }
     .navContainer {
-        width: 450px;
+        width: 432px;
         height: 100%;
+        font-size: 28px;
     }
     #home {
-        width: 150px;
+        width: 144px;
         height: 100%;
     }
     #login {
-        width: 150px;
+        width: 144px;
         height: 100%;
     }
     #favorites {
-        width: 150px;
+        width: 144px;
         height: 100%;
     }
     a {
@@ -192,8 +196,8 @@ a {
     .title {
         font-weight: normal;
         font-family: Voga;
-        font-size: 70px;
-        letter-spacing: 1.8px;
+        font-size: 64px;
+        letter-spacing: 1.6px;
     }
     .titleDescription {
         font-family: Simplifica;

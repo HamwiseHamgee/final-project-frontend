@@ -281,7 +281,7 @@
         letter-spacing: 6px;
     }
     .resultsLineAccent {
-        width: 50%;
+        width: 320px;
     }
     .resultsContent {
         display: flex;
@@ -368,7 +368,7 @@
         letter-spacing: 6px;
     }
     .resultsLineAccent {
-        width: 30%;
+        width: 370px;
     }
     .resultsContent {
         display: flex;
