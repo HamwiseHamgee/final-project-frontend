@@ -53,6 +53,9 @@ export function FavoritesContextProvider({ children }: Props) {
   }, [user]);
   
   const addFavorite = (result: Result) => {
+    result.favorite=true;
+    console.log(result.favorite);
+
     setFavorites((prevFavorites) => {
       return [...prevFavorites, result];
     });
@@ -66,6 +69,10 @@ export function FavoritesContextProvider({ children }: Props) {
 
   const removeFavorite = (result: Result) => {
     const i = favorites.indexOf(result);
+    
+    result.favorite=false;
+    console.log(result.favorite);
+
     setFavorites((prevFavorites) => {
       return [...prevFavorites.slice(0, i), ...prevFavorites.slice(i + 1)];
     });
