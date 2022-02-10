@@ -164,11 +164,11 @@ export function ResultItem({ result }: { result: Result }) {
                 </p>
               );
             })}
-          {(favorited==false && result.missedIngredientCount > 1) && (
+          {(favorited==false && result.missedIngredientCount > 1 && (
             <p className="missingIngredientLabel">
               You are missing {result.missedIngredientCount} ingredients
             </p>
-          )}
+          ))}
         </div>
         
         <div className="moreDetailsContainer">
