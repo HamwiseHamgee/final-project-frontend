@@ -92,7 +92,7 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
 
 export function ResultItem({ result }: { result: Result }) {
   const [hidden, setHidden] = useState(false);
-  const {favorites} = useContext(FavoriteContext)
+  const { favorites } = useContext(FavoriteContext);
   const [favorited, setFavorited] = useState(false);
 
   function toggleHidden() {
@@ -137,12 +137,26 @@ export function ResultItem({ result }: { result: Result }) {
 
     // const {favorites} = useContext(FavoriteContext)
 
-    if (favorites.length && (favorites?.some((favorited) => favorited.id===result.id)=== true)) {
-      setFavorited(true)
+    if (
+      favorites.length &&
+      favorites?.some((favorited) => favorited.id === result.id) === true
+    ) {
+      setFavorited(true);
     } else {
-     setFavorited(false)
+      setFavorited(false);
     }
   }
+
+  useEffect(() => {
+    if (
+      favorites.length &&
+      favorites?.some((favorited) => favorited.id === result.id) === true
+    ) {
+      setFavorited(true);
+    } else {
+      setFavorited(false);
+    }
+  }, [favorites]);
 
   function ResultContent() {
     const { addFavorite, removeFavorite } = useContext(FavoriteContext);
@@ -156,7 +170,8 @@ export function ResultItem({ result }: { result: Result }) {
         <div key={result.id} className="resultsContent">
           <img className="resultImage" src={result.image}></img>
           <p className="resultTitle">{result.title}</p>
-          {(favorited==false && result.missedIngredientCount === 1) &&
+          {favorited == false &&
+            result.missedIngredientCount === 1 &&
             result.missedIngredients.map((missedIngredient: any) => {
               return (
                 <p className="missingIngredientLabel">
@@ -164,16 +179,16 @@ export function ResultItem({ result }: { result: Result }) {
                 </p>
               );
             })}
-          {(favorited==false && result.missedIngredientCount > 1 && (
+          {favorited == false && result.missedIngredientCount > 1 && (
             <p className="missingIngredientLabel">
               You are missing {result.missedIngredientCount} ingredients
             </p>
-          ))}
+          )}
         </div>
-        
+
         <div className="moreDetailsContainer">
           <img className="resultBackImage" src={result.image}></img>
-          <h2 className='listTitle'>Ingredients:</h2>
+          <h2 className="listTitle">Ingredients:</h2>
           <ul className="extendedIngredientsList">
             {/* Ingredients list not showing */}
             {fullResults.extendedIngredients.map((ingredient: any) => {
@@ -186,7 +201,7 @@ export function ResultItem({ result }: { result: Result }) {
             })}
           </ul>
           <br></br>
-          <h2 className='instructionsTitle'>Instructions:</h2>
+          <h2 className="instructionsTitle">Instructions:</h2>
           <p className="instructions"> {fullResults.instructions} </p>
           <br></br>
           <a
@@ -201,26 +216,28 @@ export function ResultItem({ result }: { result: Result }) {
           {/* might be image instead */}
           {/* set favorite = true w/ addFavorite
         show unfavorite button if favorite = true and vice versa*/}
-        <br></br>
-        {favorited==false ? 
-          <button
-            className="favoriteButton"
-            id="favoriteButton"
-            onClick={() => addFavorite(result)}
-          >
-            <div id="underline"></div>
-            <p>Favorite</p>
-          </button> :
-
-          <button
-            className="favoriteButton"
-            id="deleteFavoriteButton"
-            onClick={() => removeFavorite(result)}
-          >
-            <div id="underline"></div>
-            <p>Delete Favorite</p>
-          </button>
-  }
+          <br></br>
+          <div className="buttonContainer">
+            {favorited == false ? (
+              <button
+                className="favoriteButton"
+                id="favoriteButton"
+                onClick={() => addFavorite(result)}
+              >
+                {/* <div id="underline"></div> */}
+                <p>Favorite</p>
+              </button>
+            ) : (
+              <button
+                className="favoriteButton"
+                id="deleteFavoriteButton"
+                onClick={() => removeFavorite(result)}
+              >
+                {/* <div id="underline"></div> */}
+                <p>Delete Favorite</p>
+              </button>
+            )}
+          </div>
         </div>
       </div>
     );

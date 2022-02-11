@@ -18,19 +18,8 @@ function Favorites() {
               <div >
 
                 <ResultContent key={favorites.id} result={favorites}></ResultContent>
-                {/* <li><img src={favorites.image}></img></li>
-                <li>{favorites.title}</li> */}
-                {/* <ul className="favoritesExtendedIngredientsList">
-                  {favorites.extendedIngredients.map((ingredient: any) => {
-                    return (
-                      <li className="extendedIngredientsItem">
-                        {ingredient.originalName},{" "}
-                        {ingredient.measures.us.amount}{" "}
-                        {ingredient.measures.us.unitLong}{" "}
-                      </li>
-                    );
-                  })}
-                </ul> */}
+
+
               </div>
             );
           })}

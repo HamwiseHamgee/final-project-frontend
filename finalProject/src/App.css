@@ -2,6 +2,34 @@ import * {
     box-sizing: border-box;
 }
 
+
+/* ===== Scrollbar CSS ===== */
+
+
+/* Firefox */
+
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #e7e2e9 transparent;
+}
+
+
+/* Chrome, Edge, and Safari */
+
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #e7e2e9;
+    border-radius: 8px;
+    border: 3px solid #ffffff;
+}
+
 .App {
     /* background-image: url("assets/marble.png"); */
     /* background-image: url("assets/background-tiles.jpeg"); */

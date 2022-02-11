@@ -213,6 +213,12 @@
     width: 100%;
 }
 
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 #favoriteButton,
 #deleteFavoriteButton {
     /* border-radius: 4px; */
@@ -242,11 +248,12 @@
 #deleteFavoriteButton p {
     color: white;
     position: relative;
-    transition: all .45s ease-Out;
+    /* transition: all .45s ease-Out; */
 }
 
-#underline {
-    /* width: 150px; */
+
+/* #underline {
+    width: 150px;
     height: 3px;
     margin-top: 15px;
     align-self: flex-end;
@@ -255,7 +262,7 @@
     position: absolute;
     transition: all .3s ease-Out;
     bottom: 0;
-}
+} */
 
 #favoriteButton:hover #underline {
     left: 0;

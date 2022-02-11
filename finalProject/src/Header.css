@@ -130,6 +130,12 @@ a {
     height: 100%;
 }
 
+@media (max-width: 400px) {
+    .titleDescription {
+        display: none;
+    }
+}
+
 @media (min-width: 768px) {
     .headerContainer {
         height: 70px;
