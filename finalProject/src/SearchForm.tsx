@@ -53,7 +53,7 @@ function handleDeleteIngredient(index: number) {
             onChange={(e)=>setSearchQuery(e.target.value)}
             onKeyPress={(e) => {(e.key === 'Enter' && addIngredient())}}>
             </input>
-              <img src={addIcon} alt='plus sign' onClick={addIngredient} ></img>
+              <img id="plusButton" src={addIcon} alt='plus sign' onClick={addIngredient} ></img>
         </div>
       </div>
 

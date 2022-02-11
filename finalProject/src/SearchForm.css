@@ -80,10 +80,16 @@
     margin: 20px 20px;
 }
 
+#plusButton {
+    width: 20px;
+    height: 20px;
+    margin: 15px 10px ;
+}
+
 .wrapper .searchInput {
     /* background: rgb(228, 219, 219); */
     background-color: rgba(235, 235, 241, 0.8);
-    width: 300px;
+    width: 280px;
     border-radius: 5px;
     position: relative;
     box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
@@ -98,7 +104,7 @@
     /* font-family: Simplifica; */
     /* font-family: Lora; */
     letter-spacing: .5px;
-    font-size: 22px;
+    font-size: 15px;
     /* text-transform: uppercase; */
 }
 
@@ -260,11 +266,18 @@
     .searchQueryContainer {
         width: 100%;
     }
-    .searchInput {
+    .wrapper .searchInput {
         width: 100%;
     }
     .searchLineAccent {
         width: 275px;
+    }
+    ::placeholder {
+        /* font-family: Simplifica; */
+        /* font-family: Lora; */
+        letter-spacing: .5px;
+        font-size: 22px;
+        /* text-transform: uppercase; */
     }
 }
 
