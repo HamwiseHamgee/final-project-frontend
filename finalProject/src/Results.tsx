@@ -90,7 +90,7 @@ export function ResultList({ searchTerm }: { searchTerm: string }) {
   );
 }
 
-export function ResultItem({ result }: { result: Result }) {
+export function ResultItem({ result, hideMissing }: { result: Result, hideMissing?: boolean }) {
   const [hidden, setHidden] = useState(false);
   const { favorites } = useContext(FavoriteContext);
   const [favorited, setFavorited] = useState(false);
@@ -161,6 +161,7 @@ export function ResultItem({ result }: { result: Result }) {
   function ResultContent() {
     const { addFavorite, removeFavorite } = useContext(FavoriteContext);
 
+
     return (
       <div
         onClick={FlipTile}
@@ -170,7 +171,7 @@ export function ResultItem({ result }: { result: Result }) {
         <div key={result.id} className="resultsContent">
           <img className="resultImage" src={result.image}></img>
           <p className="resultTitle">{result.title}</p>
-          {favorited == false &&
+          {(favorited == false || !hideMissing) &&
             result.missedIngredientCount === 1 &&
             result.missedIngredients.map((missedIngredient: any) => {
               return (
@@ -179,7 +180,7 @@ export function ResultItem({ result }: { result: Result }) {
                 </p>
               );
             })}
-          {favorited == false && result.missedIngredientCount > 1 && (
+          {(favorited == false || !hideMissing) && result.missedIngredientCount > 1 && (
             <p className="missingIngredientLabel">
               You are missing {result.missedIngredientCount} ingredients
             </p>
@@ -209,6 +210,7 @@ export function ResultItem({ result }: { result: Result }) {
             target="_blank"
             className="recipeLink"
             href={fullResults.sourceUrl}
+            onClick={(e) => e.stopPropagation()}
           >
             {" "}
             Original recipe at {fullResults.sourceName}{" "}
@@ -223,7 +225,11 @@ export function ResultItem({ result }: { result: Result }) {
               <button
                 className="favoriteButton"
                 id="favoriteButton"
-                onClick={() => addFavorite(result)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  addFavorite(result)
+                  setFavorited(true)
+                }}
               >
                 {/* <div id="underline"></div> */}
                 {/* <p>Favorite</p> */}
@@ -233,7 +239,11 @@ export function ResultItem({ result }: { result: Result }) {
               <button
                 className="favoriteButton"
                 id="deleteFavoriteButton"
-                onClick={() => removeFavorite(result)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  removeFavorite(result)
+                  setFavorited(false)
+                }}
               >
                 {/* <div id="underline"></div> */}
                 {/* <p>Delete Favorite</p> */}

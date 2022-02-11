@@ -67,6 +67,10 @@
     color: white;
 }
 
+.flip-tile .resultsContent {
+    visibility: hidden;
+}
+
 .gridContainer {
     display: flex;
     flex-direction: column;
@@ -227,6 +231,7 @@
     z-index: 3;
     width: 50%;
     max-width: 300px;
+    font: white;
 }
 
 .buttonContainer {
@@ -245,6 +250,7 @@
     background: transparent;
     font-family: Simplifica;
     letter-spacing: 1.3px;
+    color: white;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: 600;

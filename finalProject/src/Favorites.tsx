@@ -17,7 +17,7 @@ function Favorites() {
             return (
               <div >
 
-                <ResultContent key={favorites.id} result={favorites}></ResultContent>
+                <ResultContent hideMissing={true} key={favorites.id} result={favorites}></ResultContent>
 
 
               </div>

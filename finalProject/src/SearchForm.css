@@ -34,6 +34,7 @@
 } */
 
 .searchFormTitle {
+    padding-top: 7px;
     font-family: Voga;
     text-transform: uppercase;
     font-weight: 800;
