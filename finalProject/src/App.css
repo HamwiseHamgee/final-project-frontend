@@ -10,14 +10,14 @@ import * {
 
 * {
     scrollbar-width: auto;
-    scrollbar-color: #e7e2e9 transparent;
+    scrollbar-color: darkgray transparent;
 }
 
 
 /* Chrome, Edge, and Safari */
 
 *::-webkit-scrollbar {
-    width: 12px;
+    width: 7px;
 }
 
 *::-webkit-scrollbar-track {
@@ -25,9 +25,11 @@ import * {
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #e7e2e9;
+    /* background-color: #e7e2e9; */
+    background-color: darkgray;
     border-radius: 8px;
-    border: 3px solid #ffffff;
+    /* border: 3px solid #c9c8c8; */
+    border: 3px solid darkgray;
 }
 
 .App {
@@ -45,15 +47,15 @@ import * {
     /* height: 100%; */
     width: 100vw;
     /* width: 100%; */
-    overflow: scroll;
+    /* overflow: scroll; */
     position: fixed;
 }
 
 .homeContainer {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
     align-items: center;
     /* background-color: lightblue; */
 }
@@ -93,6 +95,7 @@ dl {
     .App {
         /* align-items: center; */
         /* justify-content: center; */
+        overflow-y: scroll;
     }
 }
 
