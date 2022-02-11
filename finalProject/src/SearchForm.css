@@ -97,7 +97,8 @@
 
 .searchInput {
     display: flex;
-    letter-spacing: 1px;
+    letter-spacing: .5px;
+    
 }
 
 ::placeholder {
@@ -115,12 +116,11 @@
     border: none;
     border-radius: 5px;
     padding: 0 60px 0 20px;
-    font-size: 18px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
     /* font-family: Simplifica; */
     font-family: Lora;
     letter-spacing: 1px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .searchInput.active input {
@@ -278,6 +278,9 @@
         letter-spacing: .5px;
         font-size: 22px;
         /* text-transform: uppercase; */
+    }
+    .searchInput input {
+        font-size: 20px;
     }
 }
 
