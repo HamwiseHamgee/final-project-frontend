@@ -89,6 +89,13 @@ dl {
     margin: 0;
 }
 
+@media (max-width: 768px) {
+    .App {
+        /* align-items: center; */
+        /* justify-content: center; */
+    }
+}
+
 @media (min-width: 768px) {
     .homeContainer {
         display: flex;

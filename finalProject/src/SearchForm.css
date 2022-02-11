@@ -61,7 +61,6 @@
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    
     position: relative;
     min-width: 90vw;
     font-family: Simplifica;
@@ -246,6 +245,7 @@
 
 /* Desktop */
 
+
 /* @media (min-width: 1024px) {
     .searchLineAccent {
         width: 250px;
@@ -260,8 +260,8 @@
         padding: 8px 20px;
     }
     .searchFormTitle {
-        font-size: 60px;
-        letter-spacing: 6px;
+        font-size: 40px;
+        letter-spacing: 4px;
     }
     .searchQueryContainer {
         width: 100%;
@@ -270,7 +270,7 @@
         width: 100%;
     }
     .searchLineAccent {
-        width: 275px;
+        width: 200px;
     }
     ::placeholder {
         /* font-family: Simplifica; */
@@ -281,3 +281,12 @@
     }
 }
 
+@media (min-width: 1024px) {
+    .searchFormTitle {
+        font-size: 60px;
+        letter-spacing: 6px;
+    }
+    .searchLineAccent {
+        width: 275px;
+    }
+}
