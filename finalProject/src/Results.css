@@ -71,8 +71,9 @@
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    align-self: start;
-    /* width: 95vw; */
+    align-self: center;
+    padding: 1rem;
+    width: 100%;
     color: black;
 }
 
@@ -267,6 +268,8 @@
 #favoriteButton:hover #underline {
     left: 0;
 }
+
+@media (max-width: 768px) {}
 
 @media (min-width: 768px) {
     .gridContainer {
