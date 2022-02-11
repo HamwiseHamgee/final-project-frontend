@@ -49,7 +49,7 @@ function handleDeleteIngredient(index: number) {
         <img className='searchLineAccent' src={lineAccent}></img>
       <div className="wrapper">
         <div className="searchInput">
-            <input type="text" value={searchQuery} placeholder="Type to search..." 
+            <input type="text" value={searchQuery} placeholder="Search..." 
             onChange={(e)=>setSearchQuery(e.target.value)}
             onKeyPress={(e) => {(e.key === 'Enter' && addIngredient())}}>
             </input>
