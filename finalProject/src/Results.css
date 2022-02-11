@@ -127,29 +127,43 @@
     position: absolute;
     top: 0;
     left: 0;
-    /* padding: 5px; */
+    padding: 5px;
+    padding-left: 12px;
     backface-visibility: hidden;
     /* background-color: #8a3518; */
     /* background-color: #718f94; */
-    background-color: rgb(31, 31, 32);
+    background-color: rgba(31, 31, 32, 0.5);
+    background-blend-mode: darken;
+    background-size: cover;
     /* text-align: center; */
     font-family: Lora;
     color: rgb(245, 244, 244);
     text-transform: capitalize;
     transform: rotateY(180deg);
     /* overflow: hidden; */
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     /* width: 90vw; */
     height: 100%;
+    overflow-y: scroll;
     /*  */
     /* border-image: url('./assets/vintageFrame.png') 30 / 19px round; */
 }
+
+
+/* .moreDetailsContainer .overlay {
+    background-color: rgba(31, 31, 32, 0.8);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+} */
 
 .moreDetailsContainer img {
     transform: rotateY(180deg);
     opacity: 0.5;
     position: absolute;
-    width: 90vw;
+    /* width: 90vw; */
+    width: 100%;
+    /* width: calc(100% + 7px); */
     height: 100%;
 }
 
@@ -161,11 +175,11 @@
 }
 
 .extendedIngredientsList {
-    list-style: circle;
+    list-style: none;
 }
 
 .extendedIngredientsItem {
-    list-style: circle;
+    list-style: none;
 }
 
 .flip-tile {
@@ -181,7 +195,7 @@
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
     grid-gap: 10px;
-    overflow-y: hidden scroll;
+    /* overflow-y: hidden scroll; */
 }
 
 .gridItem {
@@ -211,7 +225,8 @@
 
 .favoriteButton {
     z-index: 3;
-    width: 100%;
+    width: 50%;
+    max-width: 300px;
 }
 
 .buttonContainer {
@@ -236,12 +251,13 @@
     /* justify-self: center; */
     /* align-self: center; */
     /* width: 150px; */
+    appearance: none;
 }
 
 #favoriteButton,
 #deleteFavoriteButton {
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     cursor: pointer;
 }
 
@@ -269,13 +285,20 @@
     left: 0;
 }
 
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+    .moreDetailsContainer {
+        width: 100%;
+    }
+}
 
 @media (min-width: 768px) {
     .gridContainer {
         height: 88vh;
-        width: 70vw;
-        overflow: scroll;
+        /* width: 70vw; */
+        /* overflow: scroll; */
+        overflow-y: scroll;
+        overflow-x: hidden;
+        flex: 2;
     }
     .grid {
         /* height: 500px; */
@@ -283,8 +306,9 @@
     .resultContainer {
         /* height: 288.75px; */
         /* width: 390px; */
-        height: 231px;
-        width: 312px;
+        /* height: 231px; */
+        /* width: 312px; */
+        /* overflow: scroll; */
     }
     .resultsHeader {
         font-size: 40px;
@@ -334,8 +358,8 @@
         /* width: 468px; */
         /* height: 288.75px; */
         /* width: 390px; */
-        height: 231px;
-        width: 312px;
+        /* height: 231px; */
+        /* width: 312px; */
     }
     .missingIngredientLabel {
         max-width: 100%;
@@ -363,15 +387,15 @@
 @media (min-width: 1024px) {
     .gridContainer {
         height: 88vh;
-        width: 70vw;
+        /* width: 70vw; */
         overflow: scroll;
     }
     .grid {
         /* height: 500px; */
     }
     .resultContainer {
-        height: 288.75px;
-        width: 390px;
+        /* height: 288.75px; */
+        /* width: 390px; */
     }
     .resultsHeader {
         font-size: 60px;
@@ -396,8 +420,8 @@
         height: 100%;
         /* height: 346.5px; */
         /* width: 468px; */
-        height: 288.75px;
-        width: 390px;
+        /* height: 288.75px; */
+        /* width: 390px; */
         /* height: 231px; */
         /* width: 312px; */
     }

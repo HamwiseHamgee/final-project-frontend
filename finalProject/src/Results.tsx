@@ -186,8 +186,9 @@ export function ResultItem({ result }: { result: Result }) {
           )}
         </div>
 
-        <div className="moreDetailsContainer">
-          <img className="resultBackImage" src={result.image}></img>
+        <div className="moreDetailsContainer" style={{backgroundImage: `url(${result.image})`}}>
+          <div className='overlay'></div>
+          {/* <img className="resultBackImage" src={result.image}></img> */}
           <h2 className="listTitle">Ingredients:</h2>
           <ul className="extendedIngredientsList">
             {/* Ingredients list not showing */}
@@ -225,7 +226,8 @@ export function ResultItem({ result }: { result: Result }) {
                 onClick={() => addFavorite(result)}
               >
                 {/* <div id="underline"></div> */}
-                <p>Favorite</p>
+                {/* <p>Favorite</p> */}
+                Favorite
               </button>
             ) : (
               <button
@@ -234,7 +236,8 @@ export function ResultItem({ result }: { result: Result }) {
                 onClick={() => removeFavorite(result)}
               >
                 {/* <div id="underline"></div> */}
-                <p>Delete Favorite</p>
+                {/* <p>Delete Favorite</p> */}
+                Delete Favorite
               </button>
             )}
           </div>
