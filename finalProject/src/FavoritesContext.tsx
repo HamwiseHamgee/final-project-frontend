@@ -68,7 +68,9 @@ export function FavoritesContextProvider({ children }: Props) {
   };
 
   const removeFavorite = (result: Result) => {
-    const i = favorites.indexOf(result);
+    // const i = favorites.indexOf(result);
+
+    const i = favorites.findIndex(favorite => favorite.id === result.id);
     
     result.favorite=false;
     console.log(result.favorite);
